@@ -1,9 +1,9 @@
 <div class="booksContainer">
   @if (results.query === '') {
     <app-carousel></app-carousel>
-    @for (group of genreBooks; track group) {
+    @for (book of genreBooks; track book) {
       <div>
-        <app-book-cat-list [books]="group"></app-book-cat-list>
+
       </div>
     }
   } @else {

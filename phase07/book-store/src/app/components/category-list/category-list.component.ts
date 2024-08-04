@@ -53,7 +53,12 @@ export class CategoryListComponent implements OnInit {
     );
     try {
       this.bookProviderService.getBooksByGenre().then((r) => {
-        this.books = r;
+        if (r !== undefined) {
+          this.books = [{
+            genreName: '',
+            booksList: r
+          }];
+        }
       })
     }
     catch (e) {

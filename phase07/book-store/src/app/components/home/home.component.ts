@@ -28,7 +28,7 @@ import {SearchComponent} from "../search/search.component";
 })
 
 export class HomeComponent implements OnInit {
-  genreBooks: GenreBooks[] = [];
+  genreBooks: Book[] = [];
   results: searchType = {
     query: '',
     results: []
@@ -44,29 +44,32 @@ export class HomeComponent implements OnInit {
       this.results = output;
     });
 
-    this.subscription.add(
-      this.bookProviderService.onAddBook.subscribe(value => {
-        const groupedBooksMap: { [genre: string]: Book[] } = this.genreBooks.reduce((acc, group) => {
-          acc[group.genreName] = group.booksList;
-          return acc;
-        }, {} as { [genre: string]: Book[] });
-
-        value.genre.forEach((genre: string) => {
-          if (!groupedBooksMap[genre]) {
-            groupedBooksMap[genre] = [];
-          }
-          groupedBooksMap[genre].push(value);
-        });
-
-        this.genreBooks = Object.keys(groupedBooksMap).map(genre => ({
-          genreName: genre,
-          booksList: groupedBooksMap[genre]
-        }));
-      })
-    );
+    // this.subscription.add(
+    //   this.bookProviderService.onAddBook.subscribe(value => {
+    //     const groupedBooksMap: { [genre: string]: Book[] } = this.genreBooks.reduce((acc, group) => {
+    //       acc[group.genreName] = group.booksList;
+    //       return acc;
+    //     }, {} as { [genre: string]: Book[] });
+    //
+    //     value.genre.forEach((genre: string) => {
+    //       if (!groupedBooksMap[genre]) {
+    //         groupedBooksMap[genre] = [];
+    //       }
+    //       groupedBooksMap[genre].push(value);
+    //     });
+    //
+    //     this.genreBooks = Object.keys(groupedBooksMap).map(genre => ({
+    //       genreName: genre,
+    //       booksList: groupedBooksMap[genre]
+    //     }));
+    //   })
+    // );
     try {
-      this.bookProviderService.getBooksByGenre().then((r) => {
-        this.genreBooks = r;
+      this.bookProviderService.getBooksByGenre().then((r: Book[] | void) => {
+        if (r !== undefined) {
+          this.genreBooks = r;
+          console.log(r)
+        }
       })
     }
     catch (e) {

@@ -20,7 +20,7 @@ export class BookProviderService {
     results: []
   });
   searchResults$ = this.searchResultsSubject.asObservable();
-  private initializationPromise: Promise<void>;
+  private readonly initializationPromise: Promise<void>;
 
   constructor(private fetchBookService: FetchBookService) {
     this.fetchBookService = fetchBookService;
@@ -41,23 +41,7 @@ export class BookProviderService {
 
   public async getBooksByGenre() {
     await this.ensureInitialized();
-
-    const groupedBooks: { [genre: string]: Book[] } = this.books.reduce((acc: {
-      [genre: string]: Book[]
-    }, book: Book) => {
-      book.genre.forEach((genre: string) => {
-        if (!acc[genre]) {
-          acc[genre] = [];
-        }
-        acc[genre].push(book);
-      });
-      return acc;
-    }, {});
-
-    return Object.keys(groupedBooks).map(genre => ({
-      genreName: genre,
-      booksList: groupedBooks[genre]
-    }));
+    return this.books;
   }
 
   public findBookByName(name: string) {

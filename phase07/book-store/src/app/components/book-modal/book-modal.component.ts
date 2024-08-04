@@ -88,7 +88,6 @@ export class BookModalComponent implements OnInit {
 
     if (this.bookForm.valid) {
       const formValue = this.bookForm.value;
-      formValue.publishData = this.formatDate(formValue.publishData);
       formValue.genre = formValue.genre.split(", ");
       const book: BookPost = {
         isbn: this.generateISBN10(),

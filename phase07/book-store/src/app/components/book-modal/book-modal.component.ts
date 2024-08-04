@@ -9,6 +9,7 @@ import {ToastModule} from "primeng/toast";
 import {Book} from "../../models/Book";
 import {MessageService} from "primeng/api";
 import {BookProviderService} from "../../services/book-provider.service";
+import {BookPost, BookResponse} from "../../models/BookResponse";
 
 @Component({
   selector: 'app-book-modal',
@@ -55,7 +56,8 @@ export class BookModalComponent implements OnInit {
       name: ['', Validators.required],
       image: ['', Validators.required],
       publishData: ['', Validators.required],
-      genre: ['', Validators.required],
+      genre: [''],
+      publisher: ['', Validators.required],
       author: ['', Validators.required],
       price: ['', [Validators.required, Validators.min(1)]]
     });
@@ -88,16 +90,46 @@ export class BookModalComponent implements OnInit {
       const formValue = this.bookForm.value;
       formValue.publishData = this.formatDate(formValue.publishData);
       formValue.genre = formValue.genre.split(", ");
-      const book: Book = formValue;
-      this.bookProviderService.addBook(book);
+      const book: BookPost = {
+        isbn: this.generateISBN10(),
+        book_title: formValue.name,
+        book_author: formValue.author,
+        year_of_publication: formValue.publishData.getFullYear().toString(),
+        publisher: formValue.publisher,
+        image_url_s: formValue.image,
+        image_url_m: formValue.image,
+        image_url_l: formValue.image
+      }
       this.visible = false;
       this.submitted = false;
 
-      this.messageService.add({
-        severity: 'info',
-        summary: 'Confirmed',
-        detail: 'Book is successfully added',
-        life: 3000
+      this.bookProviderService.addBook(book).subscribe({
+        next: response => {
+          if (response.status === 200) {
+            this.messageService.add({
+              severity: 'info',
+              summary: 'Confirmed',
+              detail: 'Book is successfully added',
+              life: 3000
+            });
+          }
+          else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              life: 3000,
+              detail: 'Something went wrong while creating the book. Please try again later',
+            });
+          }
+        },
+        error: error => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            life: 3000,
+            detail: 'Something went wrong while creating the book.',
+          });
+        }
       });
     } else {
       this.messageService.add({
@@ -108,6 +140,29 @@ export class BookModalComponent implements OnInit {
       });
       this.submitted = false;
     }
+  }
+
+  generateISBN10() {
+    const generateRandomDigits = (length: number): string => {
+      let digits = '';
+      for (let i = 0; i < length; i++) {
+        digits += Math.floor(Math.random() * 10);
+      }
+      return digits;
+    };
+
+    const calculateISBN10CheckDigit = (digits: string): string => {
+      let sum = 0;
+      for (let i = 0; i < 9; i++) {
+        sum += (i + 1) * parseInt(digits[i]);
+      }
+      const checkDigit = sum % 11;
+      return checkDigit === 10 ? 'X' : checkDigit.toString();
+    };
+
+    const digits = generateRandomDigits(9);
+    const checkDigit = calculateISBN10CheckDigit(digits);
+    return digits + checkDigit;
   }
 
   updateBook() {

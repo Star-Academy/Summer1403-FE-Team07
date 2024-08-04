@@ -3,6 +3,8 @@ import {Book} from "../models/Book";
 import {BehaviorSubject, Observable, of, Subject} from "rxjs";
 import {searchType} from "../models/SearchType";
 import {FetchBookService} from "./fetch-book.service";
+import {BookPost} from "../models/BookResponse";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +24,7 @@ export class BookProviderService {
   searchResults$ = this.searchResultsSubject.asObservable();
   private readonly initializationPromise: Promise<void>;
 
-  constructor(private fetchBookService: FetchBookService) {
+  constructor(private fetchBookService: FetchBookService, private http: HttpClient) {
     this.fetchBookService = fetchBookService;
     this.initializationPromise = this.initializeBooks();
   }
@@ -48,11 +50,12 @@ export class BookProviderService {
     return this.books.find(b => b.name.toLowerCase() === name);
   }
 
-  public addBook(newBook: Book) {
-    if (this.books.findIndex(book => book.name === newBook.name) === -1) {
-      this.books.push(newBook);
-      this.onAddBook.next(newBook);
-    }
+  public addBook(book: BookPost): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post<any>("https://bookstore.abriment.com/books", book, { headers });
   }
 
   public deleteBook(newBook: string) {

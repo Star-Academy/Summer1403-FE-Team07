@@ -1,22 +1,21 @@
 import {Injectable} from '@angular/core';
 import {Book} from "../models/Book";
 import {BookResponse} from "../models/BookResponse";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class FetchBookService {
+  private apiUrl: string = "https://bookstore.abriment.com/books";
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
-
-
 
   public async fetchBooks(): Promise<Book[]> {
     try {
-      const response = await fetch('/books.json');
-      // const response = await fetch('http://192.168.23.22:3000/books?page=5&page_size=100');
+      const response = await fetch(`${this.apiUrl}?page=100&page_size=40`);
       const data = await response.json();
 
       const books: Book[] = [];
@@ -58,5 +57,13 @@ export class FetchBookService {
     const dd = String(randomDate.getDate()).padStart(2, '0');
 
     return `${yyyy}/${mm}/${dd}`;
+  }
+
+  public getBooksByPage(page: number, page_size: number) {
+    const params = {page: page.toString(), page_size: page_size.toString()};
+    const headers = new HttpHeaders({
+      'access-control-allow-origin': '*'
+    });
+    return this.http.get<{ books: BookResponse[], pages: number }>(this.apiUrl, {params, headers});
   }
 }

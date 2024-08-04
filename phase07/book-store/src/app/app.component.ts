@@ -4,6 +4,7 @@ import {NavbarComponent} from "./components/navbar/navbar.component";
 import {ConfirmationService, MessageService, PrimeNGConfig} from "primeng/api";
 import {SearchComponent} from "./components/search/search.component";
 import {PaginatorModule} from "primeng/paginator";
+import {HttpClient, provideHttpClient, withFetch} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ import {PaginatorModule} from "primeng/paginator";
 export class AppComponent {
   title = 'book-store';
 
-  constructor(private readonly primeNGConfig: PrimeNGConfig, private confirmationService: ConfirmationService, private messageService: MessageService) {
+  constructor(private readonly primeNGConfig: PrimeNGConfig, private confirmationService: ConfirmationService,
+              private messageService: MessageService) {
     primeNGConfig.ripple = true;
   }
 }

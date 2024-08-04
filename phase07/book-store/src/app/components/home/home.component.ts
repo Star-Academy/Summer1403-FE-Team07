@@ -10,14 +10,7 @@ import {searchType} from "../../models/SearchType";
 import {SearchComponent} from "../search/search.component";
 import {BookCardComponent} from "../book-card/book-card.component";
 import {PaginatorModule, PaginatorState} from "primeng/paginator";
-
-// export interface PageEvent {
-//   first: number | undefined;
-//   rows: number | undefined;
-//   page: number | undefined;
-//   pageCount: number | undefined;
-// }
-
+import {FetchBookService} from "../../services/fetch-book.service";
 
 @Component({
   selector: 'app-home',
@@ -30,7 +23,7 @@ import {PaginatorModule, PaginatorState} from "primeng/paginator";
     NgForOf,
     SearchComponent,
     BookCardComponent,
-    PaginatorModule
+    PaginatorModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -38,30 +31,45 @@ import {PaginatorModule, PaginatorState} from "primeng/paginator";
 })
 
 export class HomeComponent implements OnInit {
-  genreBooks: Book[] = [];
+  books: Book[] = [];
   results: searchType = {
     query: '',
     results: []
   };
   private subscription: Subscription = new Subscription();
 
-  constructor(private bookProviderService: BookProviderService) {
+  constructor(private bookProviderService: BookProviderService,
+              private fetchBookService: FetchBookService) {
   }
 
   first: number = 0;
   rows: number = 10;
+  totalRecords: number = 27138;
 
   onPageChange(event: PaginatorState) {
-    if (event.first != null) {
-      this.first = event.first;
-    }
-    if (event.rows != null) {
-      this.rows = event.rows;
-    }
+    this.first = event.first ?? 0;
+    this.rows = event.rows ?? 10;
+    this.fetchBooks();
+  }
+
+  fetchBooks() {
+    const page = this.first / this.rows;
+    this.fetchBookService.getBooksByPage(page-1, this.rows).subscribe(response => {
+      this.books = response.books.map(b => {
+        return {
+          name: b.book_title,
+          genre: ['horror'],
+          image: b.image_url_l,
+          author: b.book_author,
+          price: 1001.3,
+          publishData: b.year_of_publication.toString()
+        } as Book;
+      });
+      this.totalRecords = Math.ceil(response.pages);
+    });
   }
 
   ngOnInit(): void {
-
     this.bookProviderService.searchResults$.subscribe(output => {
       this.results = output;
     });
@@ -86,10 +94,11 @@ export class HomeComponent implements OnInit {
     //     }));
     //   })
     // );
+
     try {
       this.bookProviderService.getBooksByGenre().then((r: Book[] | void) => {
         if (r !== undefined) {
-          this.genreBooks = r;
+          this.books = r;
           console.log(r)
         }
       })

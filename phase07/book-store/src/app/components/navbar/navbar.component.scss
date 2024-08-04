@@ -1,0 +1,94 @@
+@mixin center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: var(--background-color-secondry);
+  border-radius: 5px;
+  padding: 15px;
+}
+
+nav {
+  @include center();
+  margin: 0;
+  padding: 25px 60px;
+  background-color: var(--navbar-color);
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  img {
+    cursor: pointer;
+  }
+
+  .input {
+    @include center();
+    background-color: var(--input-background-color);
+    width: 50%;
+    height: 50px;
+    padding: 0 20px;
+    border-radius: 10px;
+
+    > input[type="text"] {
+      color: var(--primary-text-color);
+      width: 100%;
+      height: 80%;
+      border: none;
+      outline: none;
+      padding: 0 10px;
+      font-size: 2rem;
+      background-color: var(--input-background-color);
+    }
+
+    input::placeholder {
+      color: var(--primary-text-color);
+    }
+  }
+
+  .links {
+    @include center();
+    gap: 24px;
+
+    p-button {
+      .addDataContainer {
+        background-color: var(--input-background-color);
+        padding: 10px 10px 7px;
+      }
+
+      .favoriteContainer {
+        background-color: var(--input-background-color);
+        padding: 12.5px 12.5px 9.2px;
+      }
+
+      .themeContainer {
+        @include link();
+        padding: 12.5px;
+        background-color: var(--input-background-color);
+
+        > img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
+    .addData {
+      width: 35px;
+      height: 35px;
+    }
+
+    .favorite {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

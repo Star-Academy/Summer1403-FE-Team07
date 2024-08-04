@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+[data-theme="dark"] {
+  --background-color-primary: #121212;
+  --background-color-secondry: #1E1E1E;
+  --primary-text-color: #FFFFFF;
+  --secondary-text-color: #B0B0B0;
+  --navbar-color: #1E1E1E;
+  --input-background-color: #2C2C2C;
+  --input-invalid: rgba(255, 56, 56, 0.7);
+  --input-border-color: #2C2C2C;
+  //---
+  --card-background-color: #1E1E1E;
+  --input-text-color: #FFFFFF;
+  --border-color: #333333;
+  --accent-color: #BB86FC;
+}
+
+[data-theme="light"] {
+  --background-color-primary: #fbfbfb;
+  --background-color-secondry: #F4F4FF;
+  --primary-text-color: #090937;
+  --secondary-text-color: rgba(9, 9, 55, 0.6);
+  --navbar-color: #fff;
+  --input-background-color: #F4F4FF;
+  --input-invalid: rgb(255, 41, 41);
+  --input-border-color: rgba(9, 9, 55, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: var(--background-color-primary);
+  margin: 0;
+}

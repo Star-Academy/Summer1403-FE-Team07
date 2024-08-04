@@ -1,0 +1,12 @@
+<div (click)="goToDetails(book.name)" class="genreBook">
+  <div class="imageContainer">
+    <img src="{{book.image}}" alt="{{book.name}}"/>
+  </div>
+  <div class="genre-detail">
+    <div class="genreDetailHeader">
+      <h3>{{ book.name }}</h3>
+      <p>{{ book.author }}</p>
+    </div>
+    <p>$ {{ book.price }}</p>
+  </div>
+</div>

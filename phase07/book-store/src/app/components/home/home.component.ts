@@ -1,15 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NavbarComponent} from "../navbar/navbar.component";
 import {GroupByGenrePipe} from "../../pipes/group-by-genre.pipe";
 import {BookProviderService} from "../../services/book-provider.service";
-import {BookCatListComponent} from "../book-cat-list/book-cat-list.component";
 import {Subscription} from "rxjs";
 import {AsyncPipe, NgForOf} from "@angular/common";
-import {GenreBooks} from "../../models/GenreBooks";
 import {Book} from "../../models/Book";
 import {CarouselComponent} from "../carousel/carousel.component";
 import {searchType} from "../../models/SearchType";
 import {SearchComponent} from "../search/search.component";
+import {BookCardComponent} from "../book-card/book-card.component";
+import {PaginatorModule, PaginatorState} from "primeng/paginator";
+
+// export interface PageEvent {
+//   first: number | undefined;
+//   rows: number | undefined;
+//   page: number | undefined;
+//   pageCount: number | undefined;
+// }
+
 
 @Component({
   selector: 'app-home',
@@ -17,14 +25,16 @@ import {SearchComponent} from "../search/search.component";
   imports: [
     NavbarComponent,
     GroupByGenrePipe,
-    BookCatListComponent,
     AsyncPipe,
     CarouselComponent,
     NgForOf,
-    SearchComponent
+    SearchComponent,
+    BookCardComponent,
+    PaginatorModule
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 
 export class HomeComponent implements OnInit {
@@ -36,6 +46,18 @@ export class HomeComponent implements OnInit {
   private subscription: Subscription = new Subscription();
 
   constructor(private bookProviderService: BookProviderService) {
+  }
+
+  first: number = 0;
+  rows: number = 10;
+
+  onPageChange(event: PaginatorState) {
+    if (event.first != null) {
+      this.first = event.first;
+    }
+    if (event.rows != null) {
+      this.rows = event.rows;
+    }
   }
 
   ngOnInit(): void {
@@ -71,8 +93,7 @@ export class HomeComponent implements OnInit {
           console.log(r)
         }
       })
-    }
-    catch (e) {
+    } catch (e) {
       console.log(e)
     }
   }

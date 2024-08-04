@@ -5,16 +5,25 @@ import {BookResponse} from "../models/BookResponse";
 @Injectable({
   providedIn: 'root'
 })
+
 export class FetchBookService {
 
   constructor() {
   }
 
+
+
   public async fetchBooks(): Promise<Book[]> {
     try {
-      const response = await fetch('http://192.168.23.22:3000/books?page=5&page_size=100');
+      const response = await fetch('/books.json');
+      // const response = await fetch('http://192.168.23.22:3000/books?page=5&page_size=100');
       const data = await response.json();
+
       const books: Book[] = [];
+      if (!data.books) {
+        return [];
+      }
+
       data.books.map((b: BookResponse) => {
         let book: Book = {
           name: '',
@@ -26,12 +35,13 @@ export class FetchBookService {
         };
         book.name = b.book_title;
         book.author = b.book_author;
-        book.price = Math.random()*1000 + 1;
+        book.price = Math.ceil(Math.random() * 1000 + 1);
         book.publishData = this.getRandomDateInYear(parseInt(b.year_of_publication));
-        book.genre = []
+        book.genre = [];
         book.image = b.image_url_l;
         books.push(book);
       });
+
       return books;
     } catch (error) {
       console.error('Error fetching books:', error);

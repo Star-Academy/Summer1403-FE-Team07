@@ -26,6 +26,7 @@ export class FetchBookService {
 
       data.books.map((b: BookResponse) => {
         let book: Book = {
+          id: '',
           name: '',
           image: '',
           genre: [],

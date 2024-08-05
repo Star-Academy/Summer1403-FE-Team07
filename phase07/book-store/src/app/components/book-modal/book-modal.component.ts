@@ -34,6 +34,7 @@ export class BookModalComponent implements OnInit {
   submitted: boolean = false;
   @Input() visible: boolean = false;
   @Input() book: Book | null = {
+    id: '',
     name: '',
     image: '',
     genre: [],

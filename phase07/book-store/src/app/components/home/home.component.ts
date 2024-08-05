@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
             publishData: b.year_of_publication.toString()
           } as Book;
         });
-        this.totalRecords = Math.ceil(response.pages);
+        this.totalRecords = Math.floor(response.pages);
       });
   }
 

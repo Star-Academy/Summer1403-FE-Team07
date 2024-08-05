@@ -54,19 +54,21 @@ export class HomeComponent implements OnInit {
 
   fetchBooks() {
     const page = this.first / this.rows;
-    this.fetchBookService.getBooksByPage(page-1, this.rows).subscribe(response => {
-      this.books = response.books.map(b => {
-        return {
-          name: b.book_title,
-          genre: ['horror'],
-          image: b.image_url_l,
-          author: b.book_author,
-          price: 1001.3,
-          publishData: b.year_of_publication.toString()
-        } as Book;
+    this.fetchBookService
+      .getBooksByPage(page, this.rows)
+      .subscribe(response => {
+        this.books = response.books.map(b => {
+          return {
+            name: b.book_title,
+            genre: ['horror'],
+            image: b.image_url_l,
+            author: b.book_author,
+            price: 1001.3,
+            publishData: b.year_of_publication.toString()
+          } as Book;
+        });
+        this.totalRecords = Math.ceil(response.pages);
       });
-      this.totalRecords = Math.ceil(response.pages);
-    });
   }
 
   ngOnInit(): void {

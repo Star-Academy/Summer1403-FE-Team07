@@ -1,18 +1,22 @@
-<div class="booksContainer">
-  @if (results.query === '') {
-    <app-carousel></app-carousel>
-    @for (book of books; track book) {
-      <app-book-card [book]="book"></app-book-card>
+<div class="container">
+  <div class="book-container">
+    @if (results.query === "") {
+      <app-carousel></app-carousel>
+      @for (book of books; track books) {
+        <app-book-card [book]="book"></app-book-card>
+      }
+    } @else {
+      <app-search></app-search>
     }
-  } @else {
-    <app-search></app-search>
-  }
-</div>
-
-<div class="flex align-items-center justify-content-center">
-  <div class="flex-5">
-    <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords"
-                 [rowsPerPageOptions]="[10, 20, 30]" [showFirstLastIcon]="true"/>
   </div>
-</div>
 
+  <p-paginator
+    class="paginator"
+    (onPageChange)="onPageChange($event)"
+    [first]="first"
+    [rows]="rows"
+    [totalRecords]="totalRecords"
+    [rowsPerPageOptions]="[10, 20, 30]"
+    [showFirstLastIcon]="true"
+  />
+</div>

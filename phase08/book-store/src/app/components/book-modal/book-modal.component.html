@@ -1,0 +1,256 @@
+<p-toast></p-toast>
+
+<p-dialog
+  header="Add New Book"
+  [modal]="true"
+  [(visible)]="visible"
+  (onHide)="toggleVisibility()"
+  [style]="{
+    width: 'fit-content',
+    maxWidth: '80%',
+    minWidth: '25%',
+    minHeight: '55vh',
+  }"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  styleClass="custom-dialog"
+>
+  <div class="content">
+    <h3>Please enter the information for your new book below.</h3>
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <div class="labelSection">
+          <label for="name">Name</label>
+          <p
+            class="invalid"
+            *ngIf="
+              bookForm.get('name')?.invalid &&
+              (bookForm.get('name')?.touched || submitted)
+            "
+          >
+            Required
+            <i>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                fill="rgba(255, 56, 56, 0.6)"
+              >
+                <path
+                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+                />
+              </svg>
+            </i>
+          </p>
+        </div>
+        <input
+          id="name"
+          formControlName="name"
+          class="form-control"
+          [ngClass]="{
+            'invalid-input':
+              bookForm.get('name')?.invalid &&
+              (bookForm.get('name')?.touched || submitted),
+          }"
+        />
+      </div>
+
+      <div class="form-group">
+        <div class="labelSection">
+          <label for="image">Image URL</label>
+          <p
+            class="invalid"
+            *ngIf="
+              bookForm.get('image')?.invalid &&
+              (bookForm.get('image')?.touched || submitted)
+            "
+          >
+            Required
+            <i>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                fill="rgba(255, 56, 56, 0.6)"
+              >
+                <path
+                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+                />
+              </svg>
+            </i>
+          </p>
+        </div>
+        <input
+          id="image"
+          formControlName="image"
+          class="form-control"
+          type="text"
+          [ngClass]="{
+            'invalid-input':
+              bookForm.get('image')?.invalid &&
+              (bookForm.get('image')?.touched || submitted),
+          }"
+        />
+      </div>
+
+      <div class="form-group">
+        <div class="labelSection">
+          <label for="publishData">Publish Date</label>
+          <p
+            class="invalid"
+            *ngIf="
+              bookForm.get('publishData')?.invalid &&
+              (bookForm.get('publishData')?.touched || submitted)
+            "
+          >
+            Required
+            <i>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                fill="rgba(255, 56, 56, 0.6)"
+              >
+                <path
+                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+                />
+              </svg>
+            </i>
+          </p>
+        </div>
+        <p-calendar
+          [style]="{ width: '100%' }"
+          id="publishData"
+          formControlName="publishData"
+          class="form-control dateInput"
+          [ngClass]="{
+            'invalid-input':
+              bookForm.get('publishData')?.invalid &&
+              (bookForm.get('publishData')?.touched || submitted),
+          }"
+        />
+      </div>
+
+      <div class="form-group">
+        <div class="labelSection">
+          <label for="genre">Genre</label>
+          <p
+            class="invalid"
+            *ngIf="
+              bookForm.get('genre')?.invalid &&
+              (bookForm.get('genre')?.touched || submitted)
+            "
+          >
+            Required
+            <i>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                fill="rgba(255, 56, 56, 0.6)"
+              >
+                <path
+                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+                />
+              </svg>
+            </i>
+          </p>
+        </div>
+        <input
+          id="genre"
+          formControlName="genre"
+          class="form-control"
+          type="text"
+          [ngClass]="{
+            'invalid-input':
+              bookForm.get('genre')?.invalid &&
+              (bookForm.get('genre')?.touched || submitted),
+          }"
+        />
+      </div>
+
+      <div class="form-group">
+        <div class="labelSection">
+          <label for="author">Author</label>
+          <p
+            class="invalid"
+            *ngIf="
+              bookForm.get('author')?.invalid &&
+              (bookForm.get('author')?.touched || submitted)
+            "
+          >
+            Required
+            <i>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                fill="rgba(255, 56, 56, 0.6)"
+              >
+                <path
+                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+                />
+              </svg>
+            </i>
+          </p>
+        </div>
+        <input
+          id="author"
+          formControlName="author"
+          class="form-control"
+          type="text"
+          [ngClass]="{
+            'invalid-input':
+              bookForm.get('author')?.invalid &&
+              (bookForm.get('author')?.touched || submitted),
+          }"
+        />
+      </div>
+
+      <div class="form-group">
+        <div class="labelSection">
+          <label for="price">Price</label>
+          <p
+            class="invalid"
+            *ngIf="
+              bookForm.get('price')?.invalid &&
+              (bookForm.get('price')?.touched || submitted)
+            "
+          >
+            Required
+            <i>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                fill="rgba(255, 56, 56, 0.6)"
+              >
+                <path
+                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
+                />
+              </svg>
+            </i>
+          </p>
+        </div>
+        <p-inputNumber
+          [style]="{ width: '100%' }"
+          id="price"
+          formControlName="price"
+          class="form-control priceInput"
+          [ngClass]="{
+            'invalid-input':
+              bookForm.get('price')?.invalid &&
+              (bookForm.get('price')?.touched || submitted),
+          }"
+        />
+      </div>
+
+      <p-button
+        type="submit"
+        class="submitButton"
+        [style]="{
+          outline: 'none',
+          padding: '0',
+          border: 'none',
+          'box-shadow': 'none',
+          backgroundColor: 'transparent',
+        }"
+      >
+        <div>Submit</div>
+      </p-button>
+    </form>
+  </div>
+</p-dialog>

@@ -1,0 +1,39 @@
+.carouselContainer {
+  padding: 30px 60px 0 60px;
+
+  .p-carousel-prev,
+  .p-carousel-next {
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .p-carousel-indicators {
+    align-items: center;
+    gap: 12px;
+    padding-top: 20px;
+  }
+
+  .p-carousel-indicator {
+    margin-right: 0;
+    button {
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      background: var(--secondary-text-color);
+    }
+  }
+
+  .p-carousel-indicator.p-highlight {
+    button {
+      width: 12px;
+      height: 12px;
+      background: #EF6B4A;
+    }
+  }
+}

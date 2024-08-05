@@ -1,0 +1,12 @@
+<div class="booksContainer">
+  @if (results.query === '') {
+    <app-carousel></app-carousel>
+    @for (group of genreBooks; track group) {
+      <div>
+        <app-book-cat-list [books]="group"></app-book-cat-list>
+      </div>
+    }
+  } @else {
+    <app-search></app-search>
+  }
+</div>

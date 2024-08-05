@@ -2,7 +2,7 @@
   <div class="book-container">
     @if (results.query === "") {
       <app-carousel></app-carousel>
-      @for (book of books; track books) {
+      @for (book of books; track book) {
         <app-book-card [book]="book"></app-book-card>
       }
     } @else {

@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 })
 export class BookCardComponent {
   @Input() book: Book = {
+    id: '',
     name: '',
     image: '',
     genre: [],

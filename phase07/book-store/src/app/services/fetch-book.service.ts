@@ -62,10 +62,7 @@ export class FetchBookService {
 
   public getBooksByPage(page: number, page_size: number) {
     const params = {page: page.toString(), page_size: page_size.toString()};
-    const headers = new HttpHeaders({
-      'access-control-allow-origin': 'https://bookstore.abriment.com/books'
-    });
-    return this.http.get<{ books: BookResponse[], pages: number }>(this.apiUrl, {params, headers})
+    return this.http.get<{ books: BookResponse[], pages: number }>(this.apiUrl, {params})
       .pipe(
         retry(3)
       );

@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
 
   first: number = 0;
   rows: number = 10;
-  totalRecords: number = 27138;
+  totalRecords: number = 271377;
 
   onPageChange(event: PaginatorState) {
     this.first = event.first ?? 0;
@@ -57,13 +57,14 @@ export class HomeComponent implements OnInit {
     this.fetchBookService
       .getBooksByPage(page, this.rows)
       .subscribe(response => {
+        console.log(response);
         this.books = response.books.map(b => {
           return {
             name: b.book_title,
             genre: ['horror'],
             image: b.image_url_l,
             author: b.book_author,
-            price: 1001.3,
+            price: Math.ceil(Math.random() * 1000 + 1),
             publishData: b.year_of_publication.toString()
           } as Book;
         });

@@ -8,7 +8,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 
 export class FetchBookService {
-  private apiUrl: string = "https://bookstore.abriment.com/books";
+  private apiUrl: string = "/api/books";
 
   constructor(private http: HttpClient) {
   }

@@ -55,7 +55,7 @@ export class BookProviderService {
       'Content-Type': 'application/json'
     });
 
-    return this.http.post<any>("https://bookstore.abriment.com/books", book, { headers });
+    return this.http.post<any>("/api/books", book, { headers });
   }
 
   public deleteBook(newBook: string) {

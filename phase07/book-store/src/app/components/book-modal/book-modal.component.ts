@@ -75,7 +75,7 @@ export class BookModalComponent implements OnInit {
     if (this.bookForm.invalid) {
       return;
     }
-    if (this.book) {
+    if (this.book !== null) {
       this.updateBook();
     } else {
       this.addBook();
@@ -88,7 +88,11 @@ export class BookModalComponent implements OnInit {
 
     if (this.bookForm.valid) {
       const formValue = this.bookForm.value;
-      formValue.genre = formValue.genre.split(", ");
+
+      if (formValue.genre.length !== 0) {
+        formValue.genre = formValue.genre!.split(", ");
+      }
+
       const book: BookPost = {
         isbn: this.generateISBN10(),
         book_title: formValue.name,
@@ -166,6 +170,7 @@ export class BookModalComponent implements OnInit {
 
   updateBook() {
     this.submitted = true;
+    console.log(this.book);
 
     if (this.bookForm.valid) {
       const formValue = this.bookForm.value;

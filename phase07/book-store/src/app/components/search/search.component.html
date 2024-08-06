@@ -1,0 +1,20 @@
+@if (results.results.length === 0) {
+  <h3 class="notFound" >
+    Sorry, we couldn’t find any results. Try refining your search.
+  </h3>
+} @else {
+  <div class="search-books">
+    <div (click)="goToDetails(book.name)" class="genreBook" *ngFor="let book of results.results">
+      <div class="imageContainer">
+        <img src="{{book.image}}" alt="{{book.name}}"/>
+      </div>
+      <div class="genre-detail">
+        <div class="genreDetailHeader">
+          <h3>{{ book.name }}</h3>
+          <p>{{ book.author }}</p>
+        </div>
+        <p>$ {{ book.price }}</p>
+      </div>
+    </div>
+  </div>
+}

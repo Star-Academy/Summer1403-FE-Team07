@@ -1,0 +1,114 @@
+{
+  "books": [
+    {
+      "id": "000a067d-e9a2-42ac-a205-3e7bae725d85",
+      "isbn": "0749719095",
+      "book_title": "The Twins at St Clare's (St Clare's)",
+      "book_author": "Enid Blyton",
+      "year_of_publication": "1996",
+      "publisher": "Egmont Childrens Books",
+      "image_url_s": "http://images.amazon.com/images/P/0749719095.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0749719095.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0749719095.01.LZZZZZZZ.jpg"
+    },
+    {
+      "id": "000a0829-0336-4545-aa90-3c145e939d5a",
+      "isbn": "0670854328",
+      "book_title": "Praying for Sleep",
+      "book_author": "Jeffery Deaver",
+      "year_of_publication": "1994",
+      "publisher": "Penguin USA",
+      "image_url_s": "http://images.amazon.com/images/P/0670854328.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0670854328.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0670854328.01.LZZZZZZZ.jpg"
+    },
+    {
+      "id": "000a5b92-1ce8-4712-ac15-1f4d6e06b8ac",
+      "isbn": "1556155689",
+      "book_title": "The way computers &amp; MS-DOS work: The ultimate all-color beginners' guide (WYSIWYG guide)",
+      "book_author": "S. M. H Collin",
+      "year_of_publication": "1993",
+      "publisher": "Microsoft Press",
+      "image_url_s": "http://images.amazon.com/images/P/1556155689.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/1556155689.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/1556155689.01.LZZZZZZZ.jpg"
+    },
+    {
+      "id": "000aa9cd-5db0-4556-9193-9ebb6844fdd1",
+      "isbn": "0156006340",
+      "book_title": "The Flower in the Skull",
+      "book_author": "Kathleen Alcala",
+      "year_of_publication": "1999",
+      "publisher": "Harvest Books",
+      "image_url_s": "http://images.amazon.com/images/P/0156006340.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0156006340.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0156006340.01.LZZZZZZZ.jpg"
+    },
+    {
+      "id": "000ab387-889c-49fb-8a20-50c052c479d3",
+      "isbn": "0380777827",
+      "book_title": "The Optimist's Guide to History",
+      "book_author": "Doris Flexner",
+      "year_of_publication": "1995",
+      "publisher": "Harpercollins",
+      "image_url_s": "http://images.amazon.com/images/P/0380777827.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0380777827.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0380777827.01.LZZZZZZZ.jpg"
+    },
+    {
+      "id": "000adb9a-ebb6-4232-92d2-ab6b4393e22f",
+      "isbn": "0758206240",
+      "book_title": "Burning Bridges",
+      "book_author": "Troy Soos",
+      "year_of_publication": "2004",
+      "publisher": "Kensington Publishing Corporation",
+      "image_url_s": "http://images.amazon.com/images/P/0758206240.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0758206240.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0758206240.01.LZZZZZZZ.jpg"
+    },
+    {
+      "id": "000b95c8-3c20-4abc-99c4-76dcacaabf31",
+      "isbn": "038707063X",
+      "book_title": "Trees: Structure and Function",
+      "book_author": "Martin H. Zimmermann",
+      "year_of_publication": "1975",
+      "publisher": "Springer-Verlag Telos",
+      "image_url_s": "http://images.amazon.com/images/P/038707063X.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/038707063X.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/038707063X.01.LZZZZZZZ.jpg"
+    },
+    {
+      "id": "000c3ecf-1de9-470d-b791-71af3c97eb66",
+      "isbn": "0312144520",
+      "book_title": "The Year's Best Science Fiction: Thirteenth Annual Collection",
+      "book_author": "Gardner Dozois",
+      "year_of_publication": "1996",
+      "publisher": "St. Martin's Griffin",
+      "image_url_s": "http://images.amazon.com/images/P/0312144520.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0312144520.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0312144520.01.LZZZZZZZ.jpg"
+    },
+    {
+      "id": "000d466f-7245-49a7-8bd7-bb8834216e34",
+      "isbn": "0061059900",
+      "book_title": "Sailing to Sarantium (Sarantine Mosaic, Book 1)",
+      "book_author": "Guy Gavriel Kay",
+      "year_of_publication": "2000",
+      "publisher": "Eos",
+      "image_url_s": "http://images.amazon.com/images/P/0061059900.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0061059900.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0061059900.01.LZZZZZZZ.jpg"
+    },
+    {
+      "id": "000d938a-cbe2-4951-8d89-85c58631ce2d",
+      "isbn": "1581800193",
+      "book_title": "The Essential Guide to Making Handmade Books: Gabrielle Fox",
+      "book_author": "Gabrielle Fox",
+      "year_of_publication": "2000",
+      "publisher": "North Light Books",
+      "image_url_s": "http://images.amazon.com/images/P/1581800193.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/1581800193.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/1581800193.01.LZZZZZZZ.jpg"
+    }
+  ]
+}

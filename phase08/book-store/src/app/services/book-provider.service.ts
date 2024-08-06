@@ -36,7 +36,16 @@ export class BookProviderService {
   public async getBooksByGenre() {
     await this.ensureInitialized();
 
-    const groupedBooks: { [genre: string]: Book[] } = this.books.reduce((acc: {
+    const groupedBooks: { [genre: string]: Book[] } = this.groupBooksByGenre()
+
+    return Object.keys(groupedBooks).map(genre => ({
+      genreName: genre,
+      booksList: groupedBooks[genre]
+    }));
+  }
+
+  private groupBooksByGenre() {
+    return this.books.reduce((acc: {
       [genre: string]: Book[]
     }, book: Book) => {
       book.genre.forEach((genre: string) => {
@@ -47,11 +56,6 @@ export class BookProviderService {
       });
       return acc;
     }, {});
-
-    return Object.keys(groupedBooks).map(genre => ({
-      genreName: genre,
-      booksList: groupedBooks[genre]
-    }));
   }
 
   public findBookByName(name: string) {

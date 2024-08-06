@@ -1,9 +1,0 @@
-nav {
-  display: flex;
-  gap: 30px;
-
-  .active {
-    font-weight: bold;
-    color: rgba(81, 218, 124, 0.83);
-  }
-}

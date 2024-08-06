@@ -3,7 +3,7 @@ import {Button} from "primeng/button";
 import {CalendarModule} from "primeng/calendar";
 import {DialogModule} from "primeng/dialog";
 import {InputNumberModule} from "primeng/inputnumber";
-import {NgClass, NgIf} from "@angular/common";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ToastModule} from "primeng/toast";
 import {Book} from "../../models/Book";
@@ -21,7 +21,8 @@ import {BookOperationsService} from "../../services/book-operation/book-operatio
     NgIf,
     ReactiveFormsModule,
     ToastModule,
-    NgClass
+    NgClass,
+    NgForOf
   ],
   templateUrl: './book-modal.component.html',
   styleUrl: './book-modal.component.scss',
@@ -83,59 +84,36 @@ export class BookModalComponent implements OnInit {
 
   addBook() {
     this.submitted = true;
+    const formValue = this.bookForm.value;
+    formValue.publishData = this.formatDate(formValue.publishData);
+    formValue.genre = formValue.genre.split(", ");
+    const book: Book = formValue;
+    this.bookOperations.addBook(book);
+    this.visible = false;
+    this.submitted = false;
 
-    if (this.bookForm.valid) {
-      const formValue = this.bookForm.value;
-      formValue.publishData = this.formatDate(formValue.publishData);
-      formValue.genre = formValue.genre.split(", ");
-      const book: Book = formValue;
-      this.bookOperations.addBook(book);
-      this.visible = false;
-      this.submitted = false;
-
-      this.messageService.add({
-        severity: 'info',
-        summary: 'Confirmed',
-        detail: 'Book is successfully added',
-        life: 3000
-      });
-    } else {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        life: 3000,
-        detail: 'Form is invalid. Please fill out all required fields.'
-      });
-      this.submitted = false;
-    }
+    this.messageService.add({
+      severity: 'info',
+      summary: 'Confirmed',
+      detail: 'Book is successfully added',
+      life: 3000
+    });
   }
 
   updateBook() {
     this.submitted = true;
+    const formValue = this.bookForm.value;
+    formValue.publishData = this.formatDate(formValue.publishData);
 
-    if (this.bookForm.valid) {
-      const formValue = this.bookForm.value;
-      formValue.publishData = this.formatDate(formValue.publishData);
+    if (typeof formValue.genre === 'string') {
+      formValue.genre = formValue.genre.split(", ");
+    }
 
-      if (typeof formValue.genre === 'string') {
-        formValue.genre = formValue.genre.split(", ");
-      }
+    const newBook: Book = formValue;
 
-      const newBook: Book = formValue;
-
-      if (this.book) {
-        this.bookOperations.updateBook(this.book, newBook);
-        this.visible = false;
-        this.submitted = false;
-      }
-
-    } else {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        life: 3000,
-        detail: 'Form is invalid. Please fill out all required fields.'
-      });
+    if (this.book) {
+      this.bookOperations.updateBook(this.book, newBook);
+      this.visible = false;
       this.submitted = false;
     }
   }

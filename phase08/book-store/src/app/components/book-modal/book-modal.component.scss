@@ -1,5 +1,14 @@
-.custom-dialog {
-  div.p-dialog-header {
+@mixin inputStyle {
+  width: 100%;
+  font-size: 1.5rem;
+  background-color: var(--input-background-color);
+  border: 1px solid var(--input-border-color);
+  color: var(--primary-text-color);
+  border-radius: 5px;
+}
+
+.book-dialog {
+  .p-dialog-header {
     padding: 15px;
     border-top-right-radius: 12px;
     border-top-left-radius: 12px;
@@ -15,104 +24,106 @@
       height: 18px;
     }
   }
-
-  div.p-dialog-content {
+  .p-dialog-content {
     padding: 0;
     border-bottom-right-radius: 12px;
     border-bottom-left-radius: 12px;
   }
 
-  .content {
+  .book-dialog__content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
     padding: 2rem;
-
-    > h3 {
-      margin: 0;
-      font-size: 1.8rem;
-      color: var(--primary-text-color);
-    }
   }
 
-  form {
+  .book-dialog__title {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--primary-text-color);
+  }
+
+  .book-form {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
 
-    .form-group {
+    &__group {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 7px;
-
-      .labelSection {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-
-        label {
-          font-size: 1.6rem;
-          font-weight: bold;
-          color: var(--secondary-text-color);
-        }
-
-        .invalid {
-          margin: 0;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.4rem;
-          font-weight: bold;
-          color: var(--input-invalid);
-          gap: 5px;
-
-          i {
-            width: 18px;
-            height: 18px;
-          }
-        }
-      }
-
-      input {
-        width: 100%;
-        font-size: 1.5rem;
-        padding: 10px;
-        border: 1px solid var(--input-border-color);
-        color: var(--primary-text-color);
-        border-radius: 5px;
-      }
-
-      .invalid-input {
-        border-color: var(--input-invalid);
-
-        input {
-          border-color: var(--input-invalid);
-        }
-      }
-
-      .priceInput,
-      .dateInput {
-        width: 100%;
-      }
     }
-  }
 
-  .submitButton {
-    align-self: flex-end;
+    &__label-section {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
 
-    div {
+    &__label {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: var(--secondary-text-color);
+    }
+
+    &__error {
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--input-invalid);
+      gap: 5px;
+    }
+
+    &__error-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    input {
+      @include inputStyle;
+      padding: 10px;
+    }
+
+    &__input {
+      @include inputStyle;
+    }
+
+    &__input--invalid, input.book-form__input--invalid {
+      border-color: var(--input-invalid);
+    }
+
+    .p-inputwrapper.book-form__input {
+      border: none;
+    }
+
+    .p-inputwrapper.book-form__input--invalid input {
+      border: 1px solid var(--input-invalid);
+    }
+
+    &__input--date,
+    &__input--price {
+      width: 100%;
+    }
+
+    &__submit {
+      align-self: flex-end;
+    }
+
+    &__submit-text {
       padding: 5px 10px;
       background-color: #6251dd;
-      color: var(--navbar-color);
       font-size: 1.6rem;
       font-weight: bold;
       border-radius: 5px;
@@ -124,6 +135,7 @@
     box-shadow: none;
   }
 }
+
 
 .p-link,
 .p-datepicker table {

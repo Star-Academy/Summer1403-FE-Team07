@@ -1,8 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {GroupByGenrePipe} from "../../pipes/group-by-genre.pipe";
-import {Location, NgForOf, NgOptimizedImage} from "@angular/common";
+import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {GenreBooks} from "../../models/GenreBooks";
-import {Router, RouterModule} from "@angular/router";
+import {RouterModule} from "@angular/router";
+import {LandingCardComponent} from "../landing-card/landing-card.component";
 
 @Component({
   selector: 'app-book-cat-list',
@@ -11,7 +12,8 @@ import {Router, RouterModule} from "@angular/router";
     GroupByGenrePipe,
     NgForOf,
     NgOptimizedImage,
-    RouterModule
+    RouterModule,
+    LandingCardComponent
   ],
   templateUrl: './book-cat-list.component.html',
   styleUrl: './book-cat-list.component.scss',
@@ -19,14 +21,4 @@ import {Router, RouterModule} from "@angular/router";
 
 export class BookCatListComponent {
   @Input() books: GenreBooks = {genreName: '', booksList: []};
-
-  constructor(private router: Router) {
-  }
-
-  goToDetails(name: string) {
-    this.router.navigate(['/details', name.toLowerCase().replaceAll(' ', '-')])
-      .then(() => {
-        return;
-      });
-  }
 }

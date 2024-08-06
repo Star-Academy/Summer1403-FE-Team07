@@ -64,7 +64,7 @@ p {
     aside {
       height: fit-content;
       padding: 30px;
-      background-color: var(--background-color-secondry);
+      background-color: var(--background-color-secondary);
       position: sticky;
       top: 150px;
       border: 1px solid rgba(9, 9, 55, 0.1);
@@ -123,7 +123,7 @@ p {
               border: none;
               padding: 10px;
               border-radius: 100%;
-              background-color: var(--background-color-secondry);
+              background-color: var(--background-color-secondary);
 
               img {
                 width: 25px;
@@ -171,7 +171,7 @@ p {
 }
 
 .p-confirm-popup {
-  background-color: var(--background-color-secondry);
+  background-color: var(--background-color-secondary);
   color: var(--primary-text-color);
 }
 

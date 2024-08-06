@@ -1,15 +1,16 @@
-import {Component, Input, input} from '@angular/core';
-import {Book} from "../../models/Book";
+import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
+import {Book} from "../../models/Book";
 
 @Component({
-  selector: 'app-book-card',
+  selector: 'app-landing-card',
   standalone: true,
   imports: [],
-  templateUrl: './book-card.component.html',
-  styleUrl: './book-card.component.scss'
+  templateUrl: './landing-card.component.html',
+  styleUrl: './landing-card.component.scss'
 })
-export class BookCardComponent {
+export class LandingCardComponent {
+
   @Input() book: Book = {
     name: '',
     image: '',
@@ -28,4 +29,5 @@ export class BookCardComponent {
         return;
       });
   }
+
 }

@@ -1,25 +1,24 @@
-<nav>
+<div class="navbar">
   <img
     (click)="navigate()"
-    class="logo"
-    ngSrc="/logo.svg"
+    class="navbar__logo"
+    src="/logo.svg"
     alt="logo"
-    height="40"
-    width="60"
   />
-  <div class="input">
-    <img ngSrc="{{ searchSrc }}" alt="search" height="20" width="20" />
-    <input type="text" [formControl]="searchControl" placeholder="Search..." />
+
+  <div class="navbar__search">
+    <img ngSrc="{{ searchSrc }}" alt="search" height="20" width="20"/>
+    <input type="text" [formControl]="searchControl" placeholder="Search..."/>
   </div>
 
-  <div class="links">
+  <div class="navbar__links">
     <ng-container
       *ngTemplateOutlet="
         navButton;
         context: {
           action: 'show',
-          containerClass: 'addDataContainer',
-          imageClass: 'addData',
+          containerClass: 'navbar__links__add-container',
+          imageClass: 'navbar__links__add-container__add-data-img',
           imageSrc: addSrc,
           alt: 'profile',
           height: 50,
@@ -32,8 +31,8 @@
         navButton;
         context: {
           action: '',
-          containerClass: 'favoriteContainer',
-          imageClass: 'favorite',
+          containerClass: 'navbar__links__favorite-container',
+          imageClass: 'navbar__links__favorite-container__favorite-img',
           imageSrc: favoriteSrc,
           alt: 'favorites',
           height: 24,
@@ -46,7 +45,7 @@
         navButton;
         context: {
           action: 'theme',
-          containerClass: 'themeContainer',
+          containerClass: 'navbar__links__theme-container',
           imageClass: null,
           imageSrc: themeSrc,
           alt: 'theme',
@@ -56,7 +55,7 @@
       "
     ></ng-container>
   </div>
-</nav>
+</div>
 
 <app-book-modal
   [visible]="this.visible"

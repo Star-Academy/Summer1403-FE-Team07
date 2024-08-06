@@ -14,23 +14,24 @@
   padding: 15px;
 }
 
-nav {
+.navbar {
   @include center();
   margin: 0;
   padding: 25px 60px;
   background-color: var(--navbar-color);
-  box-shadow:
-    rgba(50, 50, 93, 0.25) 0 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px,
+  rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   position: sticky;
   top: 0;
   z-index: 10;
 
-  img {
+  &__logo {
     cursor: pointer;
+    height: 40px;
+    width: 60px;
   }
 
-  .input {
+  &__search {
     @include center();
     background-color: var(--input-background-color);
     width: 50%;
@@ -50,45 +51,44 @@ nav {
     }
 
     input::placeholder {
-      color: var(--primary-text-color);
+      color: var(--secondary-text-color);
     }
   }
 
-  .links {
+  &__links {
     @include center();
     gap: 24px;
 
-    p-button {
-      .addDataContainer {
-        background-color: var(--input-background-color);
-        padding: 10px 10px 7px;
-      }
+    &__add-container {
+      background-color: var(--input-background-color);
+      padding: 10px 10px 7px;
 
-      .favoriteContainer {
-        background-color: var(--input-background-color);
-        padding: 12.5px 12.5px 9.2px;
-      }
-
-      .themeContainer {
-        @include link();
-        padding: 12.5px;
-        background-color: var(--input-background-color);
-
-        > img {
-          width: 30px;
-          height: 30px;
-        }
+      &__add-data-img {
+        width: 35px;
+        height: 35px;
       }
     }
 
-    .addData {
-      width: 35px;
-      height: 35px;
+    &__favorite-container {
+      background-color: var(--input-background-color);
+      padding: 12.5px 12.5px 9.2px;
+
+      &__favorite-img {
+        width: 30px;
+        height: 30px;
+      }
     }
 
-    .favorite {
-      width: 30px;
-      height: 30px;
+    &__theme-container {
+      @include link();
+      padding: 12.5px;
+      background-color: var(--input-background-color);
+
+      > img {
+        width: 30px;
+        height: 30px;
+      }
     }
+
   }
 }

@@ -1,13 +1,14 @@
 .genre-container {
-  width: 100%;
+  inline-size: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 30px;
 
   h3, p {
-    margin: 0;
-    padding: 0;
+    margin-block: 0;
+    padding-block: 0;
+    padding-inline: 0;
   }
 
   &__back-button {
@@ -15,7 +16,7 @@
     outline: none;
     border: none;
     background: none;
-    width: fit-content;
+    inline-size: fit-content;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -23,20 +24,20 @@
     cursor: pointer;
 
     > .genre-container__genre-name {
-      width: 100%;
+      inline-size: 100%;
       font-size: 2.4rem;
       font-weight: bold;
     }
   }
 
   &__books {
-    width: 100%;
+    inline-size: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 60px;
-    padding-left: 20px;
+    padding-inline-start: 20px;
   }
 }

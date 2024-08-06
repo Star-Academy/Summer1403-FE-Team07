@@ -1,5 +1,5 @@
 @mixin inputStyle {
-  width: 100%;
+  inline-size: 100%;
   font-size: 1.5rem;
   background-color: var(--input-background-color);
   border: 1px solid var(--input-border-color);
@@ -9,7 +9,8 @@
 
 .book-dialog {
   .p-dialog-header {
-    padding: 15px;
+    padding-block: 15px;
+    padding-inline: 15px;
     border-top-right-radius: 12px;
     border-top-left-radius: 12px;
     border-bottom: 1px solid #f0f0f0;
@@ -20,12 +21,14 @@
     }
 
     svg {
-      width: 18px;
-      height: 18px;
+      inline-size: 18px;
+      block-size: 18px;
     }
   }
+
   .p-dialog-content {
-    padding: 0;
+    padding-block: 0;
+    padding-inline: 0;
     border-bottom-right-radius: 12px;
     border-bottom-left-radius: 12px;
   }
@@ -35,24 +38,25 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
-    padding: 2rem;
+    padding-block: 2rem;
+    padding-inline: 2rem;
   }
 
   .book-dialog__title {
-    margin: 0;
+    margin-block: 0;
     font-size: 1.8rem;
     color: var(--primary-text-color);
   }
 
   .book-form {
-    width: 100%;
+    inline-size: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
 
     &__group {
-      width: 100%;
+      inline-size: 100%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -60,7 +64,7 @@
     }
 
     &__label-section {
-      width: 100%;
+      inline-size: 100%;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -75,7 +79,7 @@
     }
 
     &__error {
-      margin: 0;
+      margin-block: 0;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -87,13 +91,14 @@
     }
 
     &__error-icon {
-      width: 18px;
-      height: 18px;
+      inline-size: 18px;
+      block-size: 18px;
     }
 
     input {
       @include inputStyle;
-      padding: 10px;
+      padding-block: 10px;
+      padding-inline: 10px;
     }
 
     &__input {
@@ -114,7 +119,7 @@
 
     &__input--date,
     &__input--price {
-      width: 100%;
+      inline-size: 100%;
     }
 
     &__submit {
@@ -122,7 +127,8 @@
     }
 
     &__submit-text {
-      padding: 5px 10px;
+      padding-block: 5px;
+      padding-inline: 10px;
       background-color: #6251dd;
       font-size: 1.6rem;
       font-weight: bold;
@@ -143,10 +149,10 @@
 }
 
 .p-toast {
-  width: 40rem;
+  inline-size: 40rem;
 
   .p-toast-message-icon {
-    padding-top: 3px;
+    padding-block-start: 3px;
   }
 
   .p-toast-summary {

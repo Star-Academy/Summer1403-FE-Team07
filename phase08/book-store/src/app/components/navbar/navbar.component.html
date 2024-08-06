@@ -21,8 +21,8 @@
           imageClass: 'navbar__links__add-container__add-data-img',
           imageSrc: addSrc,
           alt: 'profile',
-          height: 50,
-          width: 50,
+          blockSize: 50,
+          inlineSize: 50,
         }
       "
     ></ng-container>
@@ -35,8 +35,8 @@
           imageClass: 'navbar__links__favorite-container__favorite-img',
           imageSrc: favoriteSrc,
           alt: 'favorites',
-          height: 24,
-          width: 20,
+          blockSize: 24,
+          inlineSize: 20,
         }
       "
     ></ng-container>
@@ -49,8 +49,8 @@
           imageClass: null,
           imageSrc: themeSrc,
           alt: 'theme',
-          height: 30,
-          width: 30,
+          blockSize: 30,
+          inlineSize: 30,
         }
       "
     ></ng-container>
@@ -70,8 +70,8 @@
   let-imageClass="imageClass"
   let-imageSrc="imageSrc"
   let-alt="alt"
-  let-height="height"
-  let-width="width"
+  let-height="blockSize"
+  let-width="inlineSize"
 >
   <p-button
     (click)="
@@ -84,7 +84,8 @@
     class="custom-button"
     [style]="{
       outline: 'none',
-      padding: '0',
+      paddingBlock: '0',
+      paddingInline: '0',
       border: 'none',
       'box-shadow': 'none',
       backgroundColor: 'transparent',

@@ -1,13 +1,15 @@
 .bookDetailContainer {
-  padding: 30px 60px;
+  padding-block: 30px;
+  padding-inline: 60px;
 
   h2, h3, p {
-    margin: 0;
-    padding: 0;
+    margin-block: 0;
+    padding-block: 0;
+    padding-inline: 0;
   }
 
   .container {
-    width: 100%;
+    inline-size: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -18,7 +20,7 @@
       outline: none;
       border: none;
       background: none;
-      width: fit-content;
+      inline-size: fit-content;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -26,7 +28,7 @@
       cursor: pointer;
 
       > p {
-        width: 100%;
+        inline-size: 100%;
         font-size: 2.4rem;
         font-weight: bold;
       }
@@ -49,7 +51,8 @@
           outline: none;
           background-color: #ef6b4a;
           box-shadow: none;
-          padding: 10px 20px;
+          padding-block: 10px;
+          padding-inline: 20px;
           border-radius: 10px;
           display: flex;
           column-gap: 200px;
@@ -59,19 +62,20 @@
       }
 
       aside {
-        height: fit-content;
-        padding: 30px;
+        block-size: fit-content;
+        padding-block: 30px;
+        padding-inline: 30px;
         background-color: var(--background-color-secondary);
         position: sticky;
-        top: 150px;
+        inset-block-start: 150px;
         border: 1px solid rgba(9, 9, 55, 0.1);
         border-radius: 7px;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
         rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
         > img {
-          width: 300px;
-          height: 450px;
+          inline-size: 300px;
+          block-size: 450px;
           border-radius: 5px;
           box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px,
           rgba(0, 0, 0, 0.23) 0 3px 6px;
@@ -81,7 +85,7 @@
       > div {
         display: flex;
         flex-direction: column;
-        width: 60%;
+        inline-size: 60%;
 
         > div {
           display: flex;
@@ -89,7 +93,7 @@
           row-gap: 60px;
 
           .header {
-            width: 100%;
+            inline-size: 100%;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -116,13 +120,14 @@
                 justify-content: center;
                 outline: none;
                 border: none;
-                padding: 10px;
+                padding-block: 10px;
+                padding-inline: 10px;
                 border-radius: 100%;
                 background-color: var(--background-color-secondary);
 
                 img {
-                  width: 25px;
-                  height: 25px;
+                  inline-size: 25px;
+                  block-size: 25px;
                 }
               }
             }
@@ -155,6 +160,12 @@
 
         .description {
           row-gap: 30px;
+
+          > div {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+          }
         }
       }
     }

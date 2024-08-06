@@ -7,10 +7,10 @@
   [(visible)]="visible"
   (onHide)="toggleVisibility()"
   [style]="{
-    width: 'fit-content',
-    maxWidth: '80%',
-    minWidth: '25%',
-    minHeight: '55vh',
+    inlineSize: 'fit-content',
+    maxInlineSize: '80%',
+    minInlineSize: '25%',
+    minBlockSize: '55vh',
   }"
   [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
   styleClass="custom-dialog"
@@ -43,7 +43,7 @@
           />
 
           <p-calendar *ngIf="field === 'publishData'"
-                      [style]="{ width: '100%' }"
+                      [style]="{  inlineSize: '100%' }"
                       [id]="field"
                       [formControlName]="field"
                       class="book-form__input book-form__input--date"
@@ -51,7 +51,7 @@
           ></p-calendar>
 
           <p-inputNumber *ngIf="field === 'price'"
-                         [style]="{ width: '100%' }"
+                         [style]="{  inlineSize: '100%' }"
                          [id]="field"
                          [formControlName]="field"
                          class="book-form__input book-form__input--price"
@@ -65,7 +65,7 @@
         class="book-form__submit"
         [style]="{
           outline: 'none',
-          padding: '0',
+          paddingBlock: '0',
           border: 'none',
           'box-shadow': 'none',
           backgroundColor: 'transparent',

@@ -1,6 +1,7 @@
 h3, p {
-  margin: 0;
-  padding: 0;
+  margin-block: 0;
+  padding-block: 0;
+  padding-inline: 0;
 }
 
 .genre__book {
@@ -9,7 +10,8 @@ h3, p {
   background-color: var(--background-color-secondary);
   display: flex;
   flex-direction: row;
-  padding: 10px;
+  padding-block: 10px;
+  padding-inline: 10px;
   gap: 20px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -21,15 +23,16 @@ h3, p {
   }
 
   &-image {
-    width: 120px;
-    height: 180px;
+    inline-size: 120px;
+    block-size: 180px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
   }
 
   &-detail {
-    width: 200px;
-    padding: 10px 0;
+    inline-size: 200px;
+    padding-block: 10px;
+    padding-inline: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

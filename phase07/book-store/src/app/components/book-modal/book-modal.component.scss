@@ -148,7 +148,7 @@
 }
 
 .p-dialog-content {
-  background-color: var(--background-color-secondry);
+  background-color: var(--background-color-secondary);
   color: var(--primary-text-color);
 
   .form-control,
@@ -173,7 +173,7 @@
 .p-datepicker-month,
 .p-datepicker-year {
   font-size: 1.8rem;
-  background-color: var(--background-color-secondry);
+  background-color: var(--background-color-secondary);
   color: var(--primary-text-color);
 
   .p-ripple:hover {

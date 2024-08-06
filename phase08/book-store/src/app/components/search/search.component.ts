@@ -4,13 +4,15 @@ import {NgForOf} from "@angular/common";
 import {searchType} from "../../models/SearchType";
 import {Router} from "@angular/router";
 import {BookSearchService} from "../../services/search/book-search.service";
+import {BookCardComponent} from "../book-card/book-card.component";
 
 @Component({
   selector: 'app-search',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NgForOf
+    NgForOf,
+    BookCardComponent
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'

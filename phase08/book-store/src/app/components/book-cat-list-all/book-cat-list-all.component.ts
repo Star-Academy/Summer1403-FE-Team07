@@ -5,8 +5,8 @@ import {GenreBooks} from "../../models/GenreBooks";
 import {Router, RouterLink} from "@angular/router";
 import {searchType} from "../../models/SearchType";
 import {SearchComponent} from "../search/search.component";
-import {ThemeService} from "../../services/theme.service";
-import {BookSearchService} from "../../services/book-search.service";
+import {ThemeService} from "../../services/theme/theme.service";
+import {BookSearchService} from "../../services/search/book-search.service";
 
 @Component({
   selector: 'app-book-cat-list-all',

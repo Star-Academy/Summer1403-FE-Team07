@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Book} from "../models/Book";
-import {Subject} from "rxjs";
-import {FetchBookService} from "./fetch-book.service";
+import {Book} from "../../models/Book";
+import {FetchBookService} from "../fetch-book/fetch-book.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +10,6 @@ export class BookProviderService {
 
   protected books: Book[] = [];
 
-  public readonly onAddBook: Subject<Book> = new Subject();
-  public readonly onDeleteBook: Subject<Book> = new Subject();
-  public readonly onUpdateBook: Subject<Book> = new Subject();
   private readonly initializationPromise: Promise<void>;
 
   constructor(private fetchBookService: FetchBookService) {
@@ -60,30 +56,6 @@ export class BookProviderService {
 
   public findBookByName(name: string) {
     return this.books.find(b => b.name.toLowerCase() === name);
-  }
-
-  public addBook(newBook: Book) {
-    if (this.books.findIndex(book => book.name === newBook.name) === -1) {
-      this.books.push(newBook);
-      this.onAddBook.next(newBook);
-    }
-  }
-
-  public deleteBook(newBook: string) {
-    const index = this.books.findIndex(book => book.name.toLowerCase() === newBook.replaceAll('-', ' '));
-    const book = this.books[index];
-    if (index !== -1) {
-      this.books.splice(index, 1);
-      this.onDeleteBook.next(book);
-    }
-  }
-
-  public updateBook(oldBook: Book, newBook: Book) {
-    const index = this.books.findIndex(book => book.name === oldBook.name);
-    if (index !== -1) {
-      this.books[index] = newBook;
-      this.onUpdateBook.next(newBook);
-    }
   }
 
   public getBooks() {

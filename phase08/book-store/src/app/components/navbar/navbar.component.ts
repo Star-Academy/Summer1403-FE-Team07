@@ -18,9 +18,9 @@ import {CalendarModule} from "primeng/calendar";
 import {InputNumberModule} from "primeng/inputnumber";
 import {SearchComponent} from "../search/search.component";
 import {debounceTime, distinctUntilChanged, filter, switchMap} from "rxjs/operators";
-import {ThemeService} from "../../services/theme.service";
+import {ThemeService} from "../../services/theme/theme.service";
 import {BookModalComponent} from "../book-modal/book-modal.component";
-import {BookSearchService} from "../../services/book-search.service";
+import {BookSearchService} from "../../services/search/book-search.service";
 
 @Component({
   selector: 'app-navbar',

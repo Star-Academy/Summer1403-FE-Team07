@@ -2,12 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {GroupByGenrePipe} from "../../pipes/group-by-genre.pipe";
 import {AsyncPipe, NgForOf} from "@angular/common";
 import {Book} from "../../models/Book";
-import {BookProviderService} from "../../services/book-provider.service";
+import {BookProviderService} from "../../services/book-provider/book-provider.service";
 import {BookCatListAllComponent} from "../book-cat-list-all/book-cat-list-all.component";
 import {ActivatedRoute} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {Subscription} from "rxjs";
 import {GenreBooks} from "../../models/GenreBooks";
+import {BookOperationsService} from "../../services/book-operation/book-operations.service";
 
 @Component({
   selector: 'app-category-list',
@@ -26,13 +27,13 @@ export class CategoryListComponent implements OnInit {
   genreCategory: string = '';
   private subscriptions: Subscription = new Subscription();
 
-  constructor(private bookProviderService: BookProviderService, private route: ActivatedRoute, private titleService: Title) {
+  constructor(private bookProviderService: BookProviderService, private bookOperation: BookOperationsService, private route: ActivatedRoute, private titleService: Title) {
 
   }
 
   ngOnInit(): void {
     this.subscriptions.add(
-      this.bookProviderService.onAddBook.subscribe(value => {
+      this.bookOperation.onAddBook.subscribe(value => {
         const groupedBooksMap: { [genre: string]: Book[] } = this.books.reduce((acc, group) => {
           acc[group.genreName] = group.booksList;
           return acc;

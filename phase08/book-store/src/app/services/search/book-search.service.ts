@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, of} from "rxjs";
-import {searchType} from "../models/SearchType";
-import {BookProviderService} from "./book-provider.service";
-import {Book} from "../models/Book";
+import {searchType} from "../../models/SearchType";
+import {BookProviderService} from "../book-provider/book-provider.service";
+import {Book} from "../../models/Book";
 
 @Injectable({
   providedIn: 'root'

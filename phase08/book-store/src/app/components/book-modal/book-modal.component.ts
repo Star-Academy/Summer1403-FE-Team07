@@ -8,7 +8,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {ToastModule} from "primeng/toast";
 import {Book} from "../../models/Book";
 import {MessageService} from "primeng/api";
-import {BookProviderService} from "../../services/book-provider.service";
+import {BookOperationsService} from "../../services/book-operation/book-operations.service";
 
 @Component({
   selector: 'app-book-modal',
@@ -50,7 +50,7 @@ export class BookModalComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private messageService: MessageService,
-              private bookProviderService: BookProviderService,) {
+              private bookOperations: BookOperationsService) {
     this.bookForm = this.fb.group({
       name: ['', Validators.required],
       image: ['', Validators.required],
@@ -89,7 +89,7 @@ export class BookModalComponent implements OnInit {
       formValue.publishData = this.formatDate(formValue.publishData);
       formValue.genre = formValue.genre.split(", ");
       const book: Book = formValue;
-      this.bookProviderService.addBook(book);
+      this.bookOperations.addBook(book);
       this.visible = false;
       this.submitted = false;
 
@@ -124,7 +124,7 @@ export class BookModalComponent implements OnInit {
       const newBook: Book = formValue;
 
       if (this.book) {
-        this.bookProviderService.updateBook(this.book, newBook);
+        this.bookOperations.updateBook(this.book, newBook);
         this.visible = false;
         this.submitted = false;
       }

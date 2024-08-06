@@ -3,7 +3,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {NgForOf} from "@angular/common";
 import {searchType} from "../../models/SearchType";
 import {Router} from "@angular/router";
-import {BookSearchService} from "../../services/book-search.service";
+import {BookSearchService} from "../../services/search/book-search.service";
 
 @Component({
   selector: 'app-search',

@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {BookProviderService} from "../../services/book-provider.service";
+import {BookProviderService} from "../../services/book-provider/book-provider.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {Book} from "../../models/Book";
@@ -15,9 +15,10 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {Subscription} from "rxjs";
 import {searchType} from "../../models/SearchType";
 import {SearchComponent} from "../search/search.component";
-import {ThemeService} from "../../services/theme.service";
+import {ThemeService} from "../../services/theme/theme.service";
 import {BookModalComponent} from "../book-modal/book-modal.component";
-import {BookSearchService} from "../../services/book-search.service";
+import {BookSearchService} from "../../services/search/book-search.service";
+import {BookOperationsService} from "../../services/book-operation/book-operations.service";
 
 @Component({
   selector: 'app-book-details',
@@ -58,7 +59,7 @@ export class BookDetailsComponent implements OnInit {
   constructor(private bookProviderService: BookProviderService, private route: ActivatedRoute,
               private titleService: Title, private router: Router, private location: Location,
               private confirmationService: ConfirmationService, private messageService: MessageService,
-              private themeService: ThemeService, private searchService: BookSearchService) {
+              private themeService: ThemeService, private searchService: BookSearchService, private bookOperation: BookOperationsService) {
   }
 
   ngOnInit(): void {
@@ -72,7 +73,7 @@ export class BookDetailsComponent implements OnInit {
     });
 
     this.subscription.add(
-      this.bookProviderService.onUpdateBook.subscribe(value => {
+      this.bookOperation.onUpdateBook.subscribe(value => {
         this.book = value;
         this.bookName = value.name.toLowerCase().replaceAll(' ', '-');
         this.router.navigate(['/details', this.bookName]).then(() => {
@@ -111,7 +112,7 @@ export class BookDetailsComponent implements OnInit {
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-sm',
       accept: () => {
-        this.bookProviderService.deleteBook(this.bookName)
+        this.bookOperation.deleteBook(this.bookName)
         this.messageService.add({
           severity: 'info',
           summary: 'Confirmed',

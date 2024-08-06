@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NavbarComponent} from "../navbar/navbar.component";
 import {GroupByGenrePipe} from "../../pipes/group-by-genre.pipe";
-import {BookProviderService} from "../../services/book-provider.service";
+import {BookProviderService} from "../../services/book-provider/book-provider.service";
 import {BookCatListComponent} from "../book-cat-list/book-cat-list.component";
 import {Subscription} from "rxjs";
 import {AsyncPipe, NgForOf} from "@angular/common";
@@ -10,7 +10,8 @@ import {Book} from "../../models/Book";
 import {CarouselComponent} from "../carousel/carousel.component";
 import {searchType} from "../../models/SearchType";
 import {SearchComponent} from "../search/search.component";
-import {BookSearchService} from "../../services/book-search.service";
+import {BookSearchService} from "../../services/search/book-search.service";
+import {BookOperationsService} from "../../services/book-operation/book-operations.service";
 
 @Component({
   selector: 'app-home',
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit {
   };
   private subscription: Subscription = new Subscription();
 
-  constructor(private bookProviderService: BookProviderService, private searchService: BookSearchService) {
+  constructor(private bookProviderService: BookProviderService, private bookOperations: BookOperationsService, private searchService: BookSearchService) {
   }
 
   ngOnInit(): void {
@@ -46,7 +47,7 @@ export class HomeComponent implements OnInit {
     });
 
     this.subscription.add(
-      this.bookProviderService.onAddBook.subscribe(value => {
+      this.bookOperations.onAddBook.subscribe(value => {
         const groupedBooksMap: { [genre: string]: Book[] } = this.genreBooks.reduce((acc, group) => {
           acc[group.genreName] = group.booksList;
           return acc;
@@ -69,8 +70,7 @@ export class HomeComponent implements OnInit {
       this.bookProviderService.getBooksByGenre().then((r) => {
         this.genreBooks = r;
       })
-    }
-    catch (e) {
+    } catch (e) {
       console.log(e)
     }
   }

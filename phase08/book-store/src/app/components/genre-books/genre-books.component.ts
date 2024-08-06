@@ -20,11 +20,11 @@ import {BookCardComponent} from "../book-card/book-card.component";
     SearchComponent,
     BookCardComponent
   ],
-  templateUrl: './book-cat-list-all.component.html',
-  styleUrl: './book-cat-list-all.component.scss'
+  templateUrl: './genre-books.component.html',
+  styleUrl: './genre-books.component.scss'
 })
 
-export class BookCatListAllComponent implements OnInit {
+export class GenreBooksComponent implements OnInit {
   @Input() books: GenreBooks = {genreName: '', booksList: []};
   results: searchType = {
     query: '',

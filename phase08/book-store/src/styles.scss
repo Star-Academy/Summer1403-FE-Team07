@@ -4,30 +4,25 @@
 @import "primeng/resources/primeng.css";
 
 [data-theme="dark"] {
-  --background-color-primary: #121212;
-  --background-color-secondary: #1E1E1E;
-  --primary-text-color: #FFFFFF;
-  --secondary-text-color: #B0B0B0;
-  --navbar-color: #1E1E1E;
-  --input-background-color: #2C2C2C;
-  --input-invalid: rgba(255, 56, 56, 0.7);
-  --input-border-color: #2C2C2C;
-  //---
-  --card-background-color: #1E1E1E;
-  --input-text-color: #FFFFFF;
-  --border-color: #333333;
-  --accent-color: #BB86FC;
+  --background-color-primary: hsl(0, 0%, 7%);
+  --background-color-secondary: hsl(0, 0%, 12%);
+  --primary-text-color: hsl(0, 0%, 100%);
+  --secondary-text-color: hsl(0, 0%, 69%);
+  --navbar-color: hsl(0, 0%, 12%);
+  --input-background-color: hsl(0, 0%, 17%);
+  --input-invalid: hsla(0, 100%, 61%, 0.7);
+  --input-border-color: hsl(0, 0%, 17%);
 }
 
 [data-theme="light"] {
-  --background-color-primary: #fbfbfb;
-  --background-color-secondary: #F4F4FF;
-  --primary-text-color: #090937;
-  --secondary-text-color: rgba(9, 9, 55, 0.6);
-  --navbar-color: #fff;
-  --input-background-color: #F4F4FF;
-  --input-invalid: rgb(255, 41, 41);
-  --input-border-color: rgba(9, 9, 55, 0.6);
+  --background-color-primary: hsl(0, 0%, 98%);
+  --background-color-secondary: hsl(240, 100%, 97%);
+  --primary-text-color: hsl(240, 100%, 22%);
+  --secondary-text-color: hsla(240, 100%, 22%, 0.6);
+  --navbar-color: hsl(0, 0%, 100%);
+  --input-background-color: hsl(240, 100%, 97%);
+  --input-invalid: hsla(0, 100%, 58%, 1);
+  --input-border-color: hsla(240, 100%, 22%, 0.6);
 }
 
 * {
@@ -42,4 +37,9 @@ html {
 body {
   background: var(--background-color-primary);
   margin: 0;
+
+  h2, h3, p {
+    margin: 0;
+    padding: 0;
+  }
 }

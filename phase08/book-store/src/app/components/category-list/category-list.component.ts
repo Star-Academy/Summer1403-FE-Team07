@@ -3,7 +3,7 @@ import {GroupByGenrePipe} from "../../pipes/group-by-genre.pipe";
 import {AsyncPipe, NgForOf} from "@angular/common";
 import {Book} from "../../models/Book";
 import {BookProviderService} from "../../services/book-provider/book-provider.service";
-import {BookCatListAllComponent} from "../book-cat-list-all/book-cat-list-all.component";
+import {BookCatListAllComponent} from "../genre-books/book-cat-list-all.component";
 import {ActivatedRoute} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {Subscription} from "rxjs";

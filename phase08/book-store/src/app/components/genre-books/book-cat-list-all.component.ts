@@ -10,7 +10,7 @@ import {BookSearchService} from "../../services/search/book-search.service";
 import {BookCardComponent} from "../book-card/book-card.component";
 
 @Component({
-  selector: 'app-book-cat-list-all',
+  selector: 'app-genre-books',
   standalone: true,
   imports: [
     GroupByGenrePipe,

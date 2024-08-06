@@ -7,6 +7,7 @@ import {searchType} from "../../models/SearchType";
 import {SearchComponent} from "../search/search.component";
 import {ThemeService} from "../../services/theme/theme.service";
 import {BookSearchService} from "../../services/search/book-search.service";
+import {BookCardComponent} from "../book-card/book-card.component";
 
 @Component({
   selector: 'app-book-cat-list-all',
@@ -16,7 +17,8 @@ import {BookSearchService} from "../../services/search/book-search.service";
     NgForOf,
     NgOptimizedImage,
     RouterLink,
-    SearchComponent
+    SearchComponent,
+    BookCardComponent
   ],
   templateUrl: './book-cat-list-all.component.html',
   styleUrl: './book-cat-list-all.component.scss'

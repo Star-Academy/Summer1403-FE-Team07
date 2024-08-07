@@ -12,9 +12,9 @@
   </div>
 
   <div class="navbar__links">
-    <app-navbar-button [buttonDate] = "bookAddButton" (click)="showDialog()" ></app-navbar-button>
+    <app-navbar-button [buttonDate]="bookAddButton" (click)="showDialog()"></app-navbar-button>
     <app-navbar-button [buttonDate]="favoriteButton"></app-navbar-button>
-    <app-navbar-button [buttonDate]="themeButton" (click)="changeTheme()" ></app-navbar-button>
+    <app-navbar-button [buttonDate]="themeButton" (click)="changeTheme()" data-testid="theme-button"></app-navbar-button>
   </div>
 </div>
 

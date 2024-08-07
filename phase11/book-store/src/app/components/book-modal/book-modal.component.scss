@@ -26,13 +26,6 @@
     }
   }
 
-  .p-dialog-content {
-    padding-block: 0;
-    padding-inline: 0;
-    border-bottom-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-  }
-
   .book-dialog__content {
     display: flex;
     flex-direction: column;
@@ -166,8 +159,12 @@
 }
 
 .p-dialog-content {
-  background-color: var(--background-color-secondary);
+  background-color: var(--background-color-primary);
   color: var(--primary-text-color);
+  padding-block: 0;
+  padding-inline: 0;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
 
   .form-control,
   .p-inputtext {

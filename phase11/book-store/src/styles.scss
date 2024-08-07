@@ -10,17 +10,19 @@
   --secondary-text-color: hsl(0, 0%, 69%);
   --navbar-color: hsl(0, 0%, 12%);
   --input-background-color: hsl(0, 0%, 17%);
+  --background-cards: hsl(0, 0%, 17%);
   --input-invalid: hsla(0, 100%, 61%, 0.7);
   --input-border-color: hsl(0, 0%, 17%);
 }
 
 [data-theme="light"] {
   --background-color-primary: hsl(0, 0%, 98%);
-  --background-color-secondary: hsl(0, 0%, 96%);
+  --background-color-secondary: hsl(240, 100%, 98%);
   --primary-text-color: hsl(240, 72%, 13%);
   --secondary-text-color: hsla(240, 72%, 13%, 60%);
   --navbar-color: hsl(0, 0%, 100%);
-  --input-background-color: hsl(240, 100%, 98%);
+  --input-background-color: hsl(0, 0%, 100%);
+  --background-cards: hsl(240, 100%, 98%);
   --input-invalid: hsla(0, 100%, 58%, 1);
   --input-border-color: hsla(240, 72%, 13%, 60%);
 }

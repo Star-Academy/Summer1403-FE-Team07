@@ -4,17 +4,6 @@
   align-items: center;
 }
 
-@mixin link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  background-color: var(--background-color-secondary);
-  border-radius: 5px;
-  padding-block: 15px;
-  padding-inline: 15px;
-}
-
 .navbar {
   @include center();
   margin-block: 0;
@@ -35,7 +24,7 @@
 
   &__search {
     @include center();
-    background-color: var(--input-background-color);
+    background-color: var(--background-cards);
     inline-size: 50%;
     block-size: 50px;
     padding-block: 0;
@@ -51,7 +40,7 @@
       padding-block: 0;
       padding-inline: 10px;
       font-size: 2rem;
-      background-color: var(--input-background-color);
+      background-color: var(--background-cards);
     }
 
     input::placeholder {
@@ -62,40 +51,5 @@
   &__links {
     @include center();
     gap: 24px;
-
-    &__add-container {
-      background-color: var(--input-background-color);
-      padding-block: 10px 7px;
-      padding-inline: 10px;
-
-      &__add-data-img {
-        inline-size: 35px;
-        block-size: 35px;
-      }
-    }
-
-    &__favorite-container {
-      background-color: var(--input-background-color);
-      padding-block: 12.5px 9.2px;
-      padding-inline: 12.5px;
-
-      &__favorite-img {
-        inline-size: 30px;
-        block-size: 30px;
-      }
-    }
-
-    &__theme-container {
-      @include link();
-      padding-block: 12.5px;
-      padding-inline: 12.5px;
-      background-color: var(--input-background-color);
-
-      > img {
-        inline-size: 30px;
-        block-size: 30px;
-      }
-    }
-
   }
 }

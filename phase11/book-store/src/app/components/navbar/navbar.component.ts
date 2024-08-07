@@ -46,8 +46,7 @@ import {ButtonData} from "../../models/ButtonData";
     NavbarButtonComponent,
   ],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
-  encapsulation: ViewEncapsulation.None
+  styleUrl: './navbar.component.scss'
 })
 
 export class NavbarComponent implements OnInit {
@@ -57,8 +56,7 @@ export class NavbarComponent implements OnInit {
   searchSrc: string = '/icons/dark/search-dark.svg';
 
   bookAddButton: ButtonData = {
-    containerClass: 'navbar__links__add-container',
-    imageClass: 'navbar__links__add-container__add-data-img',
+    containerClass: 'add-container',
     imageSrc: '/icons/dark/add-dark.svg',
     alt: 'profile',
     height: 50,
@@ -66,8 +64,7 @@ export class NavbarComponent implements OnInit {
   };
 
   favoriteButton: ButtonData = {
-    containerClass: 'navbar__links__add-container',
-    imageClass: 'navbar__links__add-container__add-data-img',
+    containerClass: 'favorite-container',
     imageSrc: '/icons/dark/heart-dark.svg',
     alt: 'profile',
     height: 50,
@@ -75,8 +72,7 @@ export class NavbarComponent implements OnInit {
   };
 
   themeButton: ButtonData = {
-    containerClass: 'navbar__links__add-container',
-    imageClass: 'navbar__links__add-container__add-data-img',
+    containerClass: 'theme-container',
     imageSrc: '/icons/dark/sun.svg',
     alt: 'profile',
     height: 50,

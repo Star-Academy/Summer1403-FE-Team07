@@ -1,0 +1,21 @@
+<p-button
+  class="custom-button"
+  [style]="{
+      outline: 'none',
+      paddingBlock: '0',
+      paddingInline: '0',
+      border: 'none',
+      'box-shadow': 'none',
+      backgroundColor: 'transparent',
+    }"
+>
+  <div [class]="buttonDate.containerClass">
+    <img
+      [class]="buttonDate.imageClass"
+      [ngSrc]="buttonDate.imageSrc"
+      [alt]="buttonDate.alt"
+      [height]="buttonDate.height"
+      [width]="buttonDate.width"
+    />
+  </div>
+</p-button>

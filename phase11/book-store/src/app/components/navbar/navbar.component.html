@@ -12,48 +12,9 @@
   </div>
 
   <div class="navbar__links">
-    <ng-container
-      *ngTemplateOutlet="
-        navButton;
-        context: {
-          action: 'show',
-          containerClass: 'navbar__links__add-container',
-          imageClass: 'navbar__links__add-container__add-data-img',
-          imageSrc: addSrc,
-          alt: 'profile',
-          blockSize: 50,
-          inlineSize: 50,
-        }
-      "
-    ></ng-container>
-    <ng-container
-      *ngTemplateOutlet="
-        navButton;
-        context: {
-          action: '',
-          containerClass: 'navbar__links__favorite-container',
-          imageClass: 'navbar__links__favorite-container__favorite-img',
-          imageSrc: favoriteSrc,
-          alt: 'favorites',
-          blockSize: 24,
-          inlineSize: 20,
-        }
-      "
-    ></ng-container>
-    <ng-container
-      *ngTemplateOutlet="
-        navButton;
-        context: {
-          action: 'theme',
-          containerClass: 'navbar__links__theme-container',
-          imageClass: null,
-          imageSrc: themeSrc,
-          alt: 'theme',
-          blockSize: 30,
-          inlineSize: 30,
-        }
-      "
-    ></ng-container>
+    <app-navbar-button [buttonDate] = "bookAddButton" (click)="showDialog()" ></app-navbar-button>
+    <app-navbar-button [buttonDate]="favoriteButton"></app-navbar-button>
+    <app-navbar-button [buttonDate]="themeButton" (click)="changeTheme()" ></app-navbar-button>
   </div>
 </div>
 
@@ -63,42 +24,3 @@
   [book]="null"
 ></app-book-modal>
 
-<ng-template
-  #navButton
-  let-action="action"
-  let-containerClass="containerClass"
-  let-imageClass="imageClass"
-  let-imageSrc="imageSrc"
-  let-alt="alt"
-  let-height="blockSize"
-  let-width="inlineSize"
->
-  <p-button
-    (click)="
-      action === 'show'
-        ? showDialog()
-        : action === 'theme'
-          ? changeTheme()
-          : null
-    "
-    class="custom-button"
-    [style]="{
-      outline: 'none',
-      paddingBlock: '0',
-      paddingInline: '0',
-      border: 'none',
-      'box-shadow': 'none',
-      backgroundColor: 'transparent',
-    }"
-  >
-    <div [class]="containerClass">
-      <img
-        [class]="imageClass ? imageClass : ''"
-        [ngSrc]="imageSrc"
-        [alt]="alt"
-        [height]="height"
-        [width]="width"
-      />
-    </div>
-  </p-button>
-</ng-template>

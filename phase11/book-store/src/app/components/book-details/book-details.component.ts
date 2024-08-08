@@ -13,7 +13,7 @@ import {CalendarModule} from "primeng/calendar";
 import {DialogModule} from "primeng/dialog";
 import {InputNumberModule} from "primeng/inputnumber";
 import {Subscription} from "rxjs";
-import {searchType} from "../../models/SearchType";
+import {SearchType} from "../../models/SearchType";
 import {SearchComponent} from "../search/search.component";
 import {ThemeService} from "../../services/theme/theme.service";
 import {BookModalComponent} from "../book-modal/book-modal.component";
@@ -50,7 +50,7 @@ export class BookDetailsComponent implements OnInit {
   isLiked: boolean = false;
   visible: boolean = false;
   private subscription: Subscription = new Subscription();
-  results: searchType = {
+  results: SearchType = {
     query: '',
     results: []
   };

@@ -3,7 +3,7 @@ import {GroupByGenrePipe} from "../../pipes/group-by-genre.pipe";
 import {Location, NgForOf, NgOptimizedImage} from "@angular/common";
 import {GenreBooks} from "../../models/GenreBooks";
 import {Router, RouterLink} from "@angular/router";
-import {searchType} from "../../models/SearchType";
+import {SearchType} from "../../models/SearchType";
 import {SearchComponent} from "../search/search.component";
 import {ThemeService} from "../../services/theme/theme.service";
 import {BookSearchService} from "../../services/search/book-search.service";
@@ -26,7 +26,7 @@ import {BookCardComponent} from "../book-card/book-card.component";
 
 export class GenreBooksComponent implements OnInit {
   @Input() books: GenreBooks = {genreName: '', booksList: []};
-  results: searchType = {
+  results: SearchType = {
     query: '',
     results: []
   };

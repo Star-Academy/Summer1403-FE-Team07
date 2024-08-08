@@ -8,7 +8,7 @@ import {AsyncPipe, NgForOf} from "@angular/common";
 import {GenreBooks} from "../../models/GenreBooks";
 import {Book} from "../../models/Book";
 import {CarouselComponent} from "../carousel/carousel.component";
-import {searchType} from "../../models/SearchType";
+import {SearchType} from "../../models/SearchType";
 import {SearchComponent} from "../search/search.component";
 import {BookSearchService} from "../../services/search/book-search.service";
 import {BookOperationsService} from "../../services/book-operation/book-operations.service";
@@ -31,7 +31,7 @@ import {BookOperationsService} from "../../services/book-operation/book-operatio
 
 export class HomeComponent implements OnInit {
   genreBooks: GenreBooks[] = [];
-  results: searchType = {
+  results: SearchType = {
     query: '',
     results: []
   };

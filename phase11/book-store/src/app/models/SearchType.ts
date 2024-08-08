@@ -1,6 +1,6 @@
 import {Book} from "./Book";
 
-export type searchType = {
+export type SearchType = {
   query: string,
   results: Book[]
 }

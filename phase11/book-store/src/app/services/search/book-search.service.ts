@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, of} from "rxjs";
-import {searchType} from "../../models/SearchType";
+import {SearchType} from "../../models/SearchType";
 import {BookProviderService} from "../book-provider/book-provider.service";
 import {Book} from "../../models/Book";
 
@@ -8,7 +8,7 @@ import {Book} from "../../models/Book";
   providedIn: 'root'
 })
 export class BookSearchService {
-  private searchResultsSubject = new BehaviorSubject<searchType>({
+  private searchResultsSubject = new BehaviorSubject<SearchType>({
     query: '',
     results: []
   });
@@ -31,7 +31,7 @@ export class BookSearchService {
   }
 
   public updateSearchResults(results: Book[], query: string): void {
-    const param: searchType = {query, results};
+    const param: SearchType = {query, results};
     this.searchResultsSubject.next(param);
   }
 }

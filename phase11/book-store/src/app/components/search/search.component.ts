@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgForOf} from "@angular/common";
-import {searchType} from "../../models/SearchType";
+import {SearchType} from "../../models/SearchType";
 import {Router} from "@angular/router";
 import {BookSearchService} from "../../services/search/book-search.service";
 import {BookCardComponent} from "../book-card/book-card.component";
@@ -18,7 +18,7 @@ import {BookCardComponent} from "../book-card/book-card.component";
   styleUrl: './search.component.scss'
 })
 export class SearchComponent implements OnInit {
-  results: searchType = {
+  results: SearchType = {
     query: '',
     results: []
   };

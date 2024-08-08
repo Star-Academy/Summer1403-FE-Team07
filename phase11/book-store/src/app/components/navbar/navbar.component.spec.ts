@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { NavbarComponent } from './navbar.component';
+import { MessageService } from 'primeng/api';
+import { By } from '@angular/platform-browser';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -8,16 +9,51 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NavbarComponent]
-    })
-    .compileComponents();
-    
+      imports: [NavbarComponent],
+      providers: [MessageService],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('component SHOULD be created WHEN ever', () => {
     expect(component).toBeTruthy();
   });
+
+  it('theme icons SHOULD change WHEN theme button clicked', () => {
+    // Arrange
+    const themeButtonContainer = fixture.debugElement.query(
+      By.css('[data-testid="theme-container"]'),
+    );
+    const themeIcon = themeButtonContainer.query(By.css('img'));
+
+    // Act
+    themeButtonContainer.triggerEventHandler('click', null);
+    fixture.detectChanges();
+
+    // Assert
+    expect(themeIcon.nativeElement.src).toContain('moon');
+  });
+
+  it('theme colors SHOULD change WHEN theme button clicked', fakeAsync(() => {
+    // Arrange
+    const themeButton = fixture.debugElement.query(
+      By.css('[data-testid="theme-container"]'),
+    );
+
+    // Act
+    themeButton.triggerEventHandler('click', null);
+    fixture.detectChanges();
+
+    // Assert
+    const newThemeButtonContainer = fixture.debugElement.query(
+      By.css('[data-testid="theme-container"] .theme-container'),
+    );
+
+    expect(
+      getComputedStyle(newThemeButtonContainer.nativeElement).backgroundColor,
+    ).toBe('rgb(245, 245, 255)');
+  }));
 });

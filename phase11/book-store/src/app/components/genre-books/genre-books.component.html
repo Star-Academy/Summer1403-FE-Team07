@@ -1,7 +1,12 @@
 <div class="genre-container">
-  @if (results.query === '') {
+  @if (results.query === "") {
     <button (click)="goBack()" class="genre-container__back-button">
-      <img src="{{isLight? '/icons/light/arrow.svg':'/icons/dark/arrow-dark.svg'}}" alt="arrow"/>
+      <img
+        src="{{
+          isLight ? '/icons/light/arrow.svg' : '/icons/dark/arrow-dark.svg'
+        }}"
+        alt="arrow"
+      />
       <p class="genre-container__genre-name">{{ books.genreName }}</p>
     </button>
     <div class="genre-container__books">
@@ -13,4 +18,3 @@
     <app-search></app-search>
   }
 </div>
-

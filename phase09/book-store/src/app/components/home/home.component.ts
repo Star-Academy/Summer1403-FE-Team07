@@ -41,37 +41,49 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initSearchResultsSubscription();
+    this.initBookOperationsSubscription();
+    this.loadBooksByGenre();
+  }
 
+  private initSearchResultsSubscription(): void {
     this.searchService.searchResults$.subscribe(output => {
       this.results = output;
     });
+  }
 
+  private initBookOperationsSubscription(): void {
     this.subscription.add(
       this.bookOperations.onAddBook.subscribe(value => {
-        const groupedBooksMap: { [genre: string]: Book[] } = this.genreBooks.reduce((acc, group) => {
-          acc[group.genreName] = group.booksList;
-          return acc;
-        }, {} as { [genre: string]: Book[] });
-
-        value.genre.forEach((genre: string) => {
-          if (!groupedBooksMap[genre]) {
-            groupedBooksMap[genre] = [];
-          }
-          groupedBooksMap[genre].push(value);
-        });
-
-        this.genreBooks = Object.keys(groupedBooksMap).map(genre => ({
-          genreName: genre,
-          booksList: groupedBooksMap[genre]
-        }));
+        this.updateGenreBooks(value);
       })
     );
+  }
+
+  private async loadBooksByGenre(): Promise<void> {
     try {
-      this.bookProviderService.getBooksByGenre().then((r) => {
-        this.genreBooks = r;
-      })
+      this.genreBooks = await this.bookProviderService.getBooksByGenre();
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
+  }
+
+  private updateGenreBooks(value: Book): void {
+    const groupedBooksMap: { [genre: string]: Book[] } = this.genreBooks.reduce((acc, group) => {
+      acc[group.genreName] = group.booksList;
+      return acc;
+    }, {} as { [genre: string]: Book[] });
+
+    value.genre.forEach((genre: string) => {
+      if (!groupedBooksMap[genre]) {
+        groupedBooksMap[genre] = [];
+      }
+      groupedBooksMap[genre].push(value);
+    });
+
+    this.genreBooks = Object.keys(groupedBooksMap).map(genre => ({
+      genreName: genre,
+      booksList: groupedBooksMap[genre]
+    }));
   }
 }

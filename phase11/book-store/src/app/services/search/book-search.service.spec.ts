@@ -75,6 +75,7 @@ describe('BookSearchServiceService', () => {
     // Act
     service.updateSearchResults(results, query);
 
+    // Assert
     service.searchResults$.subscribe((searchResults) => {
       expect(searchResults.query).toBe(query);
       expect(searchResults.results).toEqual(results);

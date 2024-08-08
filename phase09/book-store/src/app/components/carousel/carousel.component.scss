@@ -1,0 +1,41 @@
+.container {
+  padding-block: 3rem 0;
+  padding-inline: 6rem;
+
+  .p-carousel-prev,
+  .p-carousel-next {
+    display: none;
+  }
+
+  img {
+    inline-size: 100%;
+    block-size: 70rem;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .p-carousel-indicators {
+    align-items: center;
+    gap: 1.2rem;
+    padding-block-start: 2rem;
+  }
+
+  .p-carousel-indicator {
+    margin-inline-end: 0;
+
+    button {
+      inline-size: 1rem;
+      block-size: 1rem;
+      border-radius: 100%;
+      background: var(--secondary-text-color);
+    }
+  }
+
+  .p-carousel-indicator.p-highlight {
+    button {
+      inline-size: 1.2rem;
+      block-size: 1.2rem;
+      background: #EF6B4A;
+    }
+  }
+}

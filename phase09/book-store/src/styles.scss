@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+[data-theme="dark"] {
+  --background-color-primary: hsl(0, 0%, 7%);
+  --background-color-secondary: hsl(0, 0%, 12%);
+  --primary-text-color: hsl(0, 0%, 100%);
+  --secondary-text-color: hsl(0, 0%, 69%);
+  --navbar-color: hsl(0, 0%, 12%);
+  --input-background-color: hsl(0, 0%, 17%);
+  --background-cards: hsl(0, 0%, 17%);
+  --input-invalid: hsla(0, 100%, 61%, 0.7);
+  --input-border-color: hsl(0, 0%, 17%);
+}
+
+[data-theme="light"] {
+  --background-color-primary: hsl(0, 0%, 98%);
+  --background-color-secondary: hsl(240, 100%, 98%);
+  --primary-text-color: hsl(240, 72%, 13%);
+  --secondary-text-color: hsla(240, 72%, 13%, 60%);
+  --navbar-color: hsl(0, 0%, 100%);
+  --input-background-color: hsl(0, 0%, 100%);
+  --background-cards: hsl(240, 100%, 98%);
+  --input-invalid: hsla(0, 100%, 58%, 1);
+  --input-border-color: hsla(240, 72%, 13%, 60%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Manrope", sans-serif;
+}
+
+body {
+  background: var(--background-color-primary);
+  margin-block: 0;
+  margin-inline: 0;
+}

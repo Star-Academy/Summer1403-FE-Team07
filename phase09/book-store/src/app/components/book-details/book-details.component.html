@@ -1,0 +1,183 @@
+<div class="bookDetailContainer">
+  @if (results.query === "") {
+    @if (book) {
+      <p-toast />
+      <p-confirmPopup />
+      <div class="container">
+        <button (click)="goBack()">
+          <img
+            src="{{
+              isLight ? '/icons/light/arrow.svg' : '/icons/dark/arrow-dark.svg'
+            }}"
+            alt="arrow"
+          />
+          <p>Book Details</p>
+        </button>
+
+        <div class="details">
+          <aside>
+            <img src="{{ book.image }}" alt="{{ book.name }}" />
+          </aside>
+
+          <div class="buy-text-container">
+            <div>
+              <div>
+                <div
+                  class="header"
+                  [style]="{ border: 'none', outline: 'none' }"
+                >
+                  <h2>
+                    {{ book.name }}
+                  </h2>
+                  <div class="buttons">
+                    <button (click)="onClickFavorite()">
+                      @if (isLiked) {
+                        <img
+                          src="{{
+                            isLight
+                              ? '/icons/light/heart2-filled.svg'
+                              : '/icons/dark/heart2-filled-dark.svg'
+                          }}"
+                          alt="heart icon"
+                        />
+                      } @else {
+                        <img
+                          src="{{
+                            isLight
+                              ? '/icons/light/heart2.svg'
+                              : '/icons/dark/heart2-dark.svg'
+                          }}"
+                          alt="heart icon"
+                        />
+                      }
+                    </button>
+                    <button (click)="showDialog()">
+                      <img
+                        [src]="
+                          isLight
+                            ? '/icons/light/edit.svg'
+                            : '/icons/dark/edit-dark.svg'
+                        "
+                        alt="edit icon"
+                      />
+                    </button>
+                    <button (click)="deleteConfirm($event)">
+                      <img
+                        src="{{
+                          isLight
+                            ? '/icons/light/delete.svg'
+                            : '/icons/dark/delete-dark.svg'
+                        }}"
+                        alt="delete icon"
+                      />
+                    </button>
+                  </div>
+                </div>
+                <p class="author">
+                  {{ book.author }}
+                </p>
+              </div>
+
+              <div class="description">
+                <div>
+                  <p class="title">Genres</p>
+                  <p>{{ book.genre.join(", ") }}</p>
+                </div>
+
+                <div>
+                  <p class="title">Publish Date</p>
+                  <p>{{ book.publishData }}</p>
+                </div>
+
+                <div>
+                  <p class="title">Summery</p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Accusamus ad adipisci beatae est, ex excepturi fugiat
+                    laudantium libero non nostrum, obcaecati odio odit officiis
+                    quisquam repellat sequi voluptatem! Accusamus assumenda at
+                    atque commodi cumque cupiditate, delectus dolores doloribus,
+                    eaque est illum magnam magni molestias natus non provident
+                    quae, sit tenetur ullam unde vel voluptate voluptates
+                    voluptatum. Dicta, perferendis, tenetur. Accusamus adipisci
+                    alias amet architecto atque beatae consectetur consequuntur,
+                    debitis dolor doloremque dolores eaque eius esse facilis,
+                    fuga id illo in inventore ipsam iure laudantium maiores
+                    maxime, minima modi nesciunt nobis obcaecati officia omnis
+                    quos reiciendis rem repellat reprehenderit suscipit totam
+                    ullam velit voluptate! Consectetur, dignissimos eos, error
+                    est illo incidunt itaque laborum libero nostrum obcaecati
+                    perferendis quidem quisquam quos similique voluptates? A
+                    aliquid asperiores autem consequatur culpa deserunt ducimus,
+                    enim ex fugit incidunt inventore, nemo neque omnis quasi
+                    rerum. Accusantium aliquid fugiat fugit ipsam laborum
+                    laudantium minima natus, neque porro quam? Beatae blanditiis
+                    esse in iste, itaque maiores quaerat totam veritatis
+                    voluptate voluptates. Ab asperiores cupiditate, dignissimos
+                    ducimus eveniet itaque labore modi molestias neque nulla
+                    odit quos sapiente voluptatum! Adipisci aperiam consequatur
+                    doloremque earum eius exercitationem facere facilis fugit
+                    laborum magnam maiores minima molestiae odit optio placeat
+                    quaerat qui quibusdam quos, rerum sint tempore velit vero.
+                    Adipisci, est, iusto? Ad alias culpa cumque dolor dolore
+                    dolores ducimus eveniet id illo impedit incidunt labore
+                    magnam molestias mollitia nam natus nobis nostrum nulla
+                    numquam odit optio pariatur quaerat quam quas qui quos
+                    reprehenderit repudiandae sapiente sint soluta tempore velit
+                    vitae, voluptatem. Aliquam amet architecto asperiores
+                    aspernatur deleniti deserunt dicta ea eaque earum eos esse
+                    est eum eveniet expedita, fuga inventore ipsa iste iusto
+                    necessitatibus nemo nihil nobis odit omnis provident quia
+                    recusandae reiciendis rem repudiandae saepe velit veniam
+                    veritatis voluptate voluptatibus! Assumenda autem debitis
+                    eaque eligendi, exercitationem id ipsa maiores sint ut
+                    velit. Ab accusantium blanditiis cum cumque dicta dolorem
+                    doloribus eos est eveniet ex explicabo facere facilis id in,
+                    ipsam laborum molestiae nemo numquam quibusdam reiciendis
+                    repellendus saepe unde vitae! Aliquid dicta, ea explicabo
+                    nisi odit provident ut! At aut debitis dignissimos dolor
+                    dolores eaque eligendi esse exercitationem expedita facilis
+                    fugiat fugit in ipsum iure labore laudantium magnam nemo
+                    nisi numquam odio odit officiis omnis perspiciatis possimus
+                    praesentium, quasi repellendus sequi sint tempore temporibus
+                    tenetur vel vitae, voluptates! Aperiam deserunt distinctio
+                    dolorum id incidunt, labore molestias nam nemo nesciunt quam
+                    quia veniam. Ab distinctio doloribus exercitationem fugit
+                    inventore itaque obcaecati quia quos, ratione vel? Accusamus
+                    amet consectetur consequuntur cumque fugiat iure, maxime
+                    molestiae optio, perspiciatis quaerat quas quidem rem
+                    repellendus velit voluptas! Alias aliquid atque delectus
+                    dolorum id ipsa ipsum labore laudantium magni neque nobis
+                    odit perspiciatis provident rem sequi, similique, temporibus
+                    unde veritatis voluptas, voluptatibus. Aut exercitationem
+                    inventore ipsa ipsum modi numquam odio optio quas, quis quod
+                    quos tempore, veniam? Cum nemo nesciunt quam! Delectus iste
+                    rem repellendus totam voluptas. Aperiam aspernatur aut
+                    commodi deleniti dolores earum esse est facere facilis
+                    impedit iure laudantium officiis, repellat repellendus unde
+                    ut veniam veritatis! Debitis, deleniti impedit ipsum
+                    pariatur porro reiciendis voluptate. Labore.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <p-button [style]="{ 'align-self': 'flex-end' }">
+              <span>${{ book.price }}</span>
+              <span>Buy Now</span>
+            </p-button>
+          </div>
+        </div>
+      </div>
+      <app-book-modal
+        [(visible)]="visible"
+        [book]="this.book ? this.book : null"
+        (visibleChange)="closeDialog()"
+      ></app-book-modal>
+    } @else {
+      <div>Book not found!</div>
+    }
+  } @else {
+    <app-search></app-search>
+  }
+</div>

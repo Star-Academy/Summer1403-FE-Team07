@@ -11,7 +11,7 @@ import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 describe('SearchComponent', () => {
-  let component: SearchComponent;
+  let sut: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
   let mockSearchService: jasmine.SpyObj<BookSearchService>;
   let mockRouter: jasmine.SpyObj<Router>;
@@ -36,16 +36,11 @@ describe('SearchComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(SearchComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
   });
 
   it('SHOULD create the component WHEN initialized', () => {
-    // Arrange
-
-    // Act
-
-    // Assert
-    expect(component).toBeTruthy();
+    expect(sut).toBeTruthy();
   });
 
   it('SHOULD subscribe to search results WHEN component is initialized', () => {
@@ -57,7 +52,7 @@ describe('SearchComponent', () => {
     fixture.detectChanges();
 
     // Assert
-    expect(component.results).toEqual(mockResults);
+    expect(sut.results).toEqual(mockResults);
   });
 
   it('SHOULD navigate to book details WHEN goToDetails is called', () => {
@@ -67,7 +62,7 @@ describe('SearchComponent', () => {
     mockRouter.navigate.and.returnValue(Promise.resolve(true));
 
     // Act
-    component.goToDetails(bookName);
+    sut.goToDetails(bookName);
 
     // Assert
     expect(mockRouter.navigate).toHaveBeenCalledWith([

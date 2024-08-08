@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 import { SearchType } from '../../models/SearchType';
 
 describe('GenreBooksComponent', () => {
-  let component: GenreBooksComponent;
+  let sut: GenreBooksComponent;
   let fixture: ComponentFixture<GenreBooksComponent>;
   let debugElement: DebugElement;
   let mockLocation: jasmine.SpyObj<Location>;
@@ -44,15 +44,12 @@ describe('GenreBooksComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(GenreBooksComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     debugElement = fixture.debugElement;
   });
 
-  it('SHOULD create the component WHEN initialized', () => {
-    // Arrange & Act (Component creation is handled by the framework)
-
-    // Assert
-    expect(component).toBeTruthy();
+  it('SHOULD create the sut WHEN initialized', () => {
+    expect(sut).toBeTruthy();
   });
 
   it('SHOULD display the correct book details WHEN books input is set', () => {
@@ -70,7 +67,7 @@ describe('GenreBooksComponent', () => {
         },
       ],
     };
-    component.books = expectedBooks;
+    sut.books = expectedBooks;
 
     // Act
     fixture.detectChanges();
@@ -101,7 +98,7 @@ describe('GenreBooksComponent', () => {
         },
       ],
     };
-    component.books = expectedBooks;
+    sut.books = expectedBooks;
     fixture.detectChanges();
 
     // Act
@@ -120,7 +117,7 @@ describe('GenreBooksComponent', () => {
 
   it('SHOULD navigate back WHEN back button is clicked', () => {
     // Arrange
-    const expectedBooks: GenreBooks = {
+    sut.books = {
       genreName: 'Fiction',
       booksList: [
         {
@@ -133,7 +130,6 @@ describe('GenreBooksComponent', () => {
         },
       ],
     };
-    component.books = expectedBooks;
     fixture.detectChanges();
 
     // Act
@@ -155,7 +151,7 @@ describe('GenreBooksComponent', () => {
     searchResultsSubject.next(expectedSearchResults);
 
     // Assert
-    expect(component.results).toEqual(expectedSearchResults);
+    expect(sut.results).toEqual(expectedSearchResults);
   });
 
   it('SHOULD update theme WHEN theme is toggled', () => {
@@ -167,12 +163,12 @@ describe('GenreBooksComponent', () => {
     themeToggleSubject.next(isLight);
 
     // Assert
-    expect(component.isLight).toBe(isLight);
+    expect(sut.isLight).toBe(isLight);
   });
 
-  it('SHOULD display the search component WHEN search query is not empty', () => {
+  it('SHOULD display the search sut WHEN search query is not empty', () => {
     // Arrange
-    component.results.query = 'test query';
+    sut.results.query = 'test query';
 
     // Act
     fixture.detectChanges();
@@ -184,8 +180,8 @@ describe('GenreBooksComponent', () => {
 
   it('SHOULD display genre books WHEN search query is empty', () => {
     // Arrange
-    component.results.query = '';
-    component.books = {
+    sut.results.query = '';
+    sut.books = {
       genreName: 'Fiction',
       booksList: [
         {

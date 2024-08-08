@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 import { Book } from '../../models/Book';
 
 describe('LandingCardComponent', () => {
-  let component: LandingCardComponent;
+  let sut: LandingCardComponent;
   let fixture: ComponentFixture<LandingCardComponent>;
   let debugElement: DebugElement;
   let mockRouter: jasmine.SpyObj<Router>;
@@ -20,12 +20,12 @@ describe('LandingCardComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(LandingCardComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     debugElement = fixture.debugElement;
   });
 
   it('SHOULD create the component WHEN initialized', () => {
-    expect(component).toBeTruthy();
+    expect(sut).toBeTruthy();
   });
 
   it('SHOULD display the correct book details WHEN book input is set', () => {
@@ -38,7 +38,7 @@ describe('LandingCardComponent', () => {
       publishData: '2021-01-01',
       price: 20,
     };
-    component.book = expectedBook;
+    sut.book = expectedBook;
 
     // Act
     fixture.detectChanges();
@@ -74,7 +74,7 @@ describe('LandingCardComponent', () => {
       publishData: '2021-01-01',
       price: 20,
     };
-    component.book = expectedBook;
+    sut.book = expectedBook;
     fixture.detectChanges();
 
     // Act

@@ -4,7 +4,7 @@ import { MessageService } from 'primeng/api';
 import { By } from '@angular/platform-browser';
 
 describe('NavbarComponent', () => {
-  let component: NavbarComponent;
+  let sut: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
 
   beforeEach(async () => {
@@ -14,12 +14,12 @@ describe('NavbarComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavbarComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('component SHOULD be created WHEN ever', () => {
-    expect(component).toBeTruthy();
+    expect(sut).toBeTruthy();
   });
 
   it('theme icons SHOULD change WHEN theme button clicked', () => {

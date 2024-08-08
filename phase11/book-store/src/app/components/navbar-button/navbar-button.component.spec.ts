@@ -7,7 +7,7 @@ import { ButtonData } from '../../models/ButtonData';
 import { NgOptimizedImage } from '@angular/common';
 
 describe('NavbarButtonComponent', () => {
-  let component: NavbarButtonComponent;
+  let sut: NavbarButtonComponent;
   let fixture: ComponentFixture<NavbarButtonComponent>;
   let debugElement: DebugElement;
 
@@ -17,17 +17,12 @@ describe('NavbarButtonComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavbarButtonComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     debugElement = fixture.debugElement;
   });
 
   it('SHOULD create the component WHEN initialized', () => {
-    // Arrange
-
-    // Act
-
-    // Assert
-    expect(component).toBeTruthy();
+    expect(sut).toBeTruthy();
   });
 
   it('SHOULD display the correct image attributes WHEN buttonData is set', () => {
@@ -39,7 +34,7 @@ describe('NavbarButtonComponent', () => {
       height: 50,
       width: 50,
     };
-    component.buttonDate = buttonData;
+    sut.buttonDate = buttonData;
 
     // Act
     fixture.detectChanges();
@@ -62,7 +57,7 @@ describe('NavbarButtonComponent', () => {
       height: 50,
       width: 50,
     };
-    component.buttonDate = buttonData;
+    sut.buttonDate = buttonData;
 
     // Act
     fixture.detectChanges();

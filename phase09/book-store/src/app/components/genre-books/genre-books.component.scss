@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 30px;
+  gap: 3rem;
 
   h3, p {
     margin-block: 0;
@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 1rem;
     cursor: pointer;
 
     > .genre-container__genre-name {
@@ -37,7 +37,7 @@
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    gap: 60px;
-    padding-inline-start: 20px;
+    gap: 6rem;
+    padding-inline-start: 2rem;
   }
 }

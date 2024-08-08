@@ -1,6 +1,6 @@
 .container {
-  padding-block: 30px 0;
-  padding-inline: 60px;
+  padding-block: 3rem 0;
+  padding-inline: 6rem;
 
   .p-carousel-prev,
   .p-carousel-next {
@@ -9,23 +9,23 @@
 
   img {
     inline-size: 100%;
-    block-size: 700px;
+    block-size: 70rem;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 1rem;
   }
 
   .p-carousel-indicators {
     align-items: center;
-    gap: 12px;
-    padding-block-start: 20px;
+    gap: 1.2rem;
+    padding-block-start: 2rem;
   }
 
   .p-carousel-indicator {
     margin-inline-end: 0;
 
     button {
-      inline-size: 10px;
-      block-size: 10px;
+      inline-size: 1rem;
+      block-size: 1rem;
       border-radius: 100%;
       background: var(--secondary-text-color);
     }
@@ -33,8 +33,8 @@
 
   .p-carousel-indicator.p-highlight {
     button {
-      inline-size: 12px;
-      block-size: 12px;
+      inline-size: 1.2rem;
+      block-size: 1.2rem;
       background: #EF6B4A;
     }
   }

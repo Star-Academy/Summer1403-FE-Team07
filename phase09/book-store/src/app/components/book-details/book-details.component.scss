@@ -1,6 +1,6 @@
 .bookDetailContainer {
-  padding-block: 30px;
-  padding-inline: 60px;
+  padding-block: 3rem;
+  padding-inline: 6rem;
 
   h2, h3, p {
     margin-block: 0;
@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 30px;
+    gap: 3rem;
 
     > button {
       color: var(--primary-text-color);
@@ -24,7 +24,7 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 10px;
+      gap: 1rem;
       cursor: pointer;
 
       > p {
@@ -38,12 +38,12 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      gap: 80px;
+      gap: 8rem;
 
       > .buy-text-container {
         display: flex;
         flex-direction: column;
-        row-gap: 100px;
+        row-gap: 10rem;
         align-items: flex-end;
 
         p-button > .p-ripple {
@@ -51,11 +51,11 @@
           outline: none;
           background-color: #ef6b4a;
           box-shadow: none;
-          padding-block: 10px;
-          padding-inline: 20px;
-          border-radius: 10px;
+          padding-block: 1rem;
+          padding-inline: 2rem;
+          border-radius: 1rem;
           display: flex;
-          column-gap: 200px;
+          column-gap: 20rem;
           font-size: 2rem;
           font-weight: 500;
         }
@@ -63,20 +63,20 @@
 
       aside {
         block-size: fit-content;
-        padding-block: 30px;
-        padding-inline: 30px;
+        padding-block: 3rem;
+        padding-inline: 3rem;
         background-color: var(--background-color-secondary);
         position: sticky;
-        inset-block-start: 150px;
+        inset-block-start: 15rem;
         border: 1px solid rgba(9, 9, 55, 0.1);
-        border-radius: 7px;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        border-radius: 0.7rem;
+        box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px,
+        rgba(0, 0, 0, 0.23) 0 3px 6px;
 
         > img {
-          inline-size: 300px;
-          block-size: 450px;
-          border-radius: 5px;
+          inline-size: 30rem;
+          block-size: 45rem;
+          border-radius: 0.5rem;
           box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px,
           rgba(0, 0, 0, 0.23) 0 3px 6px;
         }
@@ -90,7 +90,7 @@
         > div {
           display: flex;
           flex-direction: column;
-          row-gap: 60px;
+          row-gap: 6rem;
 
           .header {
             inline-size: 100%;
@@ -109,7 +109,7 @@
               flex-direction: row;
               align-items: center;
               font-size: 2rem;
-              gap: 15px;
+              gap: 1.5rem;
 
               button,
               p-button {
@@ -120,14 +120,14 @@
                 justify-content: center;
                 outline: none;
                 border: none;
-                padding-block: 10px;
-                padding-inline: 10px;
+                padding-block: 1rem;
+                padding-inline: 1rem;
                 border-radius: 100%;
                 background-color: var(--background-color-secondary);
 
                 img {
-                  inline-size: 25px;
-                  block-size: 25px;
+                  inline-size: 2.5rem;
+                  block-size: 2.5rem;
                 }
               }
             }
@@ -141,7 +141,7 @@
           > div {
             display: flex;
             flex-direction: column;
-            row-gap: 5px;
+            row-gap: 0.5rem;
 
             .title {
               color: var(--primary-text-color);
@@ -159,12 +159,12 @@
         }
 
         .description {
-          row-gap: 30px;
+          row-gap: 3rem;
 
           > div {
             display: flex;
             flex-direction: column;
-            row-gap: 10px;
+            row-gap: 1rem;
           }
         }
       }

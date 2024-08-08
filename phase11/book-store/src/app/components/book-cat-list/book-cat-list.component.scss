@@ -1,0 +1,70 @@
+:host {
+  inline-size: 100%;
+  block-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.genre {
+  inline-size: 100%;
+  block-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  &__header {
+    inline-size: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    & > .genre__title {
+      font-weight: bold;
+      font-size: 3.2rem;
+      color: var(--primary-text-color);
+    }
+
+    & > .genre__view-all {
+      outline: none;
+      border: none;
+      background: none;
+      text-decoration: none;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #EF6B4A;
+      cursor: pointer;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inline-size: 0;
+        block-size: 0.3rem;
+        inset-inline-start: 0;
+        inset-block-end: 0;
+        background-color: #EF6B4A;
+        transition: all ease-in-out .2s;
+      }
+
+      &:hover::after {
+        inline-size: 100%;
+      }
+    }
+  }
+
+  &__books {
+    inline-size: 100%;
+    block-size: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5rem;
+  }
+}

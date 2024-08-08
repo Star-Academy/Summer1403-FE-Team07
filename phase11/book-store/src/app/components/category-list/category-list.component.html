@@ -1,0 +1,9 @@
+<div class="container" >
+  @for(group of books; track group) {
+    <div>
+      @if (group.genreName.toLowerCase().replaceAll(' ', '-') === genreCategory) {
+        <app-genre-books [books]="group" ></app-genre-books>
+      }
+    </div>
+  }
+</div>

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GroupByGenrePipe } from '../../pipes/group-by-genre.pipe';
 import { Location, NgForOf, NgOptimizedImage } from '@angular/common';
 import { GenreBooks } from '../../models/GenreBooks';
 import { Router, RouterLink } from '@angular/router';
@@ -13,7 +12,6 @@ import { BookCardComponent } from '../book-card/book-card.component';
   selector: 'app-genre-books',
   standalone: true,
   imports: [
-    GroupByGenrePipe,
     NgForOf,
     NgOptimizedImage,
     RouterLink,

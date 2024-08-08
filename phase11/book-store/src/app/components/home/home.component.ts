@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
+<<<<<<< HEAD
 import { GroupByGenrePipe } from '../../pipes/group-by-genre.pipe';
+=======
+>>>>>>> 6cfbb0d466087db6f5822c060fb2acaff4a19473
 import { BookProviderService } from '../../services/book-provider/book-provider.service';
 import { BookCatListComponent } from '../book-cat-list/book-cat-list.component';
 import { Subscription } from 'rxjs';
@@ -18,7 +21,6 @@ import { BookOperationsService } from '../../services/book-operation/book-operat
   standalone: true,
   imports: [
     NavbarComponent,
-    GroupByGenrePipe,
     BookCatListComponent,
     AsyncPipe,
     CarouselComponent,

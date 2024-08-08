@@ -10,7 +10,21 @@ describe('ThemeService', () => {
     service = TestBed.inject(ThemeService);
   });
 
-  it('should be created', () => {
+  it('service SHOULD be created WHEN ever', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('onToggle method SHOULD be defined WHEN ever', () => {
+    expect(service.onToggle).toBeDefined();
+  });
+
+  it('onToggle method SHOULD toggle theme WHEN called', () => {
+    // Arrange
+
+    // Act
+    service.toggleTheme(false);
+
+    // Assert
+    expect(document.body.getAttribute('data-theme')).toBe('dark');
   });
 });

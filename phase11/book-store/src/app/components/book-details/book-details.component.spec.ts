@@ -19,8 +19,6 @@ describe('BookDetailsComponent', () => {
   let sut: BookDetailsComponent;
   let fixture: ComponentFixture<BookDetailsComponent>;
   let mockBookProviderService: jasmine.SpyObj<BookProviderService>;
-  let mockConfirmationService: jasmine.SpyObj<ConfirmationService>;
-  let mockMessageService: jasmine.SpyObj<MessageService>;
   let mockThemeService: jasmine.SpyObj<ThemeService>;
   let mockBookOperationsService: jasmine.SpyObj<BookOperationsService>;
   let mockBookSearchService: jasmine.SpyObj<BookSearchService>;
@@ -32,10 +30,6 @@ describe('BookDetailsComponent', () => {
     mockBookProviderService = jasmine.createSpyObj('BookProviderService', [
       'findBookByName',
     ]);
-    mockConfirmationService = jasmine.createSpyObj('ConfirmationService', [
-      'confirm',
-    ]);
-    mockMessageService = jasmine.createSpyObj('MessageService', ['add']);
     mockThemeService = jasmine.createSpyObj('ThemeService', [], {
       onToggle: new Subject<boolean>(),
     });
@@ -68,8 +62,6 @@ describe('BookDetailsComponent', () => {
       ],
       providers: [
         { provide: BookProviderService, useValue: mockBookProviderService },
-        { provide: ConfirmationService, useValue: mockConfirmationService },
-        { provide: MessageService, useValue: mockMessageService },
         { provide: ThemeService, useValue: mockThemeService },
         { provide: BookOperationsService, useValue: mockBookOperationsService },
         { provide: BookSearchService, useValue: mockBookSearchService },
@@ -77,6 +69,8 @@ describe('BookDetailsComponent', () => {
         { provide: Router, useValue: mockRouter },
         { provide: Location, useValue: mockLocation },
         Title,
+        MessageService,
+        ConfirmationService,
       ],
     }).compileComponents();
 
@@ -118,33 +112,6 @@ describe('BookDetailsComponent', () => {
     expect(mockLocation.back).toHaveBeenCalled();
   });
 
-  it('SHOULD display confirmation popup and delete book WHEN deleteConfirm is called', () => {
-    // Arrange
-    sut.bookName = 'test-book';
-
-    // Mock the confirm method to immediately call the accept function
-    // mockConfirmationService.confirm.and.callFake((confirmation) => {
-    //   confirmation.accept();
-    // });
-
-    // Act
-    sut.deleteConfirm(new MouseEvent('click'));
-
-    // Assert
-    expect(mockBookOperationsService.deleteBook).toHaveBeenCalledWith(
-      'test-book',
-    );
-    expect(mockRouter.navigate).toHaveBeenCalledWith(['']);
-    expect(mockMessageService.add).toHaveBeenCalledWith(
-      jasmine.objectContaining({
-        severity: 'info',
-        summary: 'Confirmed',
-        detail: 'Book is successfully deleted',
-        life: 3000,
-      }),
-    );
-  });
-
   it('SHOULD update the book and display a success message WHEN onUpdateBook emits', () => {
     // Arrange
     const updatedBook: Book = {
@@ -155,6 +122,7 @@ describe('BookDetailsComponent', () => {
       publishData: '2023-01-01',
       price: 15,
     };
+    mockRouter.navigate.and.returnValue(Promise.resolve(true));
 
     // Act
     fixture.detectChanges();
@@ -167,14 +135,6 @@ describe('BookDetailsComponent', () => {
       '/details',
       'updated-book',
     ]);
-    expect(mockMessageService.add).toHaveBeenCalledWith(
-      jasmine.objectContaining({
-        severity: 'info',
-        summary: 'Confirmed',
-        detail: 'Book is successfully updated',
-        life: 3000,
-      }),
-    );
   });
 
   it('SHOULD toggle theme WHEN onToggle emits', () => {

@@ -1,0 +1,192 @@
+.bookDetailContainer {
+  padding-block: 3rem;
+  padding-inline: 6rem;
+
+  h2,
+  h3,
+  p {
+    margin-block: 0;
+    padding-block: 0;
+    padding-inline: 0;
+  }
+
+  .container {
+    inline-size: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+
+    > button {
+      color: var(--primary-text-color);
+      outline: none;
+      border: none;
+      background: none;
+      inline-size: fit-content;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+
+      > p {
+        inline-size: 100%;
+        font-size: 2.4rem;
+        font-weight: bold;
+      }
+    }
+
+    .details {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8rem;
+
+      > .buy-text-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10rem;
+        align-items: flex-end;
+
+        p-button > .p-ripple {
+          border: none;
+          outline: none;
+          background-color: #ef6b4a;
+          box-shadow: none;
+          padding-block: 1rem;
+          padding-inline: 2rem;
+          border-radius: 1rem;
+          display: flex;
+          column-gap: 20rem;
+          font-size: 2rem;
+          font-weight: 500;
+        }
+      }
+
+      aside {
+        block-size: fit-content;
+        padding-block: 3rem;
+        padding-inline: 3rem;
+        background-color: var(--background-color-secondary);
+        position: sticky;
+        inset-block-start: 15rem;
+        border: 1px solid rgba(9, 9, 55, 0.1);
+        border-radius: 0.7rem;
+        box-shadow:
+          rgba(0, 0, 0, 0.16) 0 3px 6px,
+          rgba(0, 0, 0, 0.23) 0 3px 6px;
+
+        > img {
+          inline-size: 30rem;
+          block-size: 45rem;
+          border-radius: 0.5rem;
+          box-shadow:
+            rgba(0, 0, 0, 0.16) 0 3px 6px,
+            rgba(0, 0, 0, 0.23) 0 3px 6px;
+        }
+      }
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        inline-size: 60%;
+
+        > div {
+          display: flex;
+          flex-direction: column;
+          row-gap: 6rem;
+
+          .header {
+            inline-size: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            > h2 {
+              font-size: 4rem;
+              color: var(--primary-text-color);
+            }
+
+            > .buttons {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              font-size: 2rem;
+              gap: 1.5rem;
+
+              button,
+              p-button {
+                cursor: pointer;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                outline: none;
+                border: none;
+                padding-block: 1rem;
+                padding-inline: 1rem;
+                border-radius: 100%;
+                background-color: var(--background-color-secondary);
+
+                img {
+                  inline-size: 2.5rem;
+                  block-size: 2.5rem;
+                }
+              }
+            }
+          }
+
+          .author {
+            font-size: 3.2rem;
+            color: var(--secondary-text-color);
+          }
+
+          > div {
+            display: flex;
+            flex-direction: column;
+            row-gap: 0.5rem;
+
+            .title {
+              color: var(--primary-text-color);
+              font-size: 2.2rem;
+              font-weight: bold;
+            }
+
+            p {
+              color: var(--secondary-text-color);
+              font-size: 2rem;
+              display: flex;
+              text-align: justify;
+            }
+          }
+        }
+
+        .description {
+          row-gap: 3rem;
+
+          > div {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .p-confirm-popup-content,
+  .p-button-label {
+    font-size: 1.7rem;
+  }
+
+  .p-confirm-popup {
+    background-color: var(--background-color-secondary);
+    color: var(--primary-text-color);
+  }
+
+  .p-button.p-button-danger:not(:disabled) {
+    background-color: #ef6b4a;
+    border-color: #ef6b4a;
+  }
+}

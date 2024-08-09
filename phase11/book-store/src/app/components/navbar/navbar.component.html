@@ -1,0 +1,27 @@
+<div class="navbar">
+  <img (click)="navigate()" alt="logo" class="navbar__logo" src="/logo.svg" />
+
+  <div class="navbar__search">
+    <img alt="search" height="20" ngSrc="{{ searchSrc }}" width="20" />
+    <input [formControl]="searchControl" placeholder="Search..." type="text" />
+  </div>
+
+  <div class="navbar__links">
+    <app-navbar-button
+      (click)="showDialog()"
+      [buttonDate]="bookAddButton"
+    ></app-navbar-button>
+    <app-navbar-button [buttonDate]="favoriteButton"></app-navbar-button>
+    <app-navbar-button
+      (click)="changeTheme()"
+      [buttonDate]="themeButton"
+      data-testid="theme-container"
+    ></app-navbar-button>
+  </div>
+</div>
+
+<app-book-modal
+  (visibleChange)="closeDialog()"
+  [book]="null"
+  [visible]="this.visible"
+></app-book-modal>

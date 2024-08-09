@@ -10,6 +10,10 @@ describe('ThemeService', () => {
     service = TestBed.inject(ThemeService);
   });
 
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  });
+
   it('service SHOULD be created WHEN ever', () => {
     expect(service).toBeTruthy();
   });

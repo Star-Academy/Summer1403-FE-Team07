@@ -48,6 +48,13 @@ describe('GenreBooksComponent', () => {
     debugElement = fixture.debugElement;
   });
 
+  afterEach(() => {
+    if (fixture) {
+      fixture.destroy();
+    }
+    TestBed.resetTestingModule();
+  });
+
   it('SHOULD create the sut WHEN initialized', () => {
     expect(sut).toBeTruthy();
   });

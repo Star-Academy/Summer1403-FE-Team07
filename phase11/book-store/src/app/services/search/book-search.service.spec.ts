@@ -51,6 +51,10 @@ describe('BookSearchServiceService', () => {
     service = TestBed.inject(BookSearchService);
   });
 
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  });
+
   it('service SHOULD be created WHEN ever', () => {
     expect(service).toBeTruthy();
   });

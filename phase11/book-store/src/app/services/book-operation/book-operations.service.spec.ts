@@ -18,6 +18,10 @@ describe('BookOperationsService', () => {
     service = TestBed.inject(BookOperationsService);
   });
 
+  afterEach(() => {
+    TestBed.resetTestingModule();
+  });
+
   it('service SHOULD be created WHEN ever', () => {
     expect(service).toBeTruthy();
   });

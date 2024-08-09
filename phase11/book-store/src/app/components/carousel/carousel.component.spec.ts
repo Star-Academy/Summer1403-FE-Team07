@@ -20,6 +20,13 @@ describe('CarouselComponent', () => {
     debugElement = fixture.debugElement;
   });
 
+  afterEach(() => {
+    if (fixture) {
+      fixture.destroy();
+    }
+    TestBed.resetTestingModule();
+  });
+
   it('SHOULD create the component WHEN initialized', () => {
     expect(sut).toBeTruthy();
   });
@@ -60,7 +67,6 @@ describe('CarouselComponent', () => {
     // Assert
     const imgElements = debugElement.queryAll(By.css('img'));
     expect(imgElements.length).toBe(5);
-    console.log(imgElements);
     expect(imgElements[0].nativeElement.src).toContain('/banners/banner3.jpg');
     expect(imgElements[1].nativeElement.src).toContain('/banners/banner2.jpg');
     expect(imgElements[2].nativeElement.src).toContain('/banners/banner1.jpg');

@@ -39,6 +39,13 @@ describe('BookModalComponent', () => {
     debugElement = fixture.debugElement;
   });
 
+  afterEach(() => {
+    if (fixture) {
+      fixture.destroy();
+    }
+    TestBed.resetTestingModule();
+  });
+
   it('SHOULD create the component WHEN initialized', () => {
     expect(sut).toBeTruthy();
   });

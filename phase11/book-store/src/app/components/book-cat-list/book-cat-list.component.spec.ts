@@ -24,6 +24,13 @@ describe('BookCatListComponent', () => {
     sut = fixture.componentInstance;
   });
 
+  afterEach(() => {
+    if (fixture) {
+      fixture.destroy();
+    }
+    TestBed.resetTestingModule();
+  });
+
   it('SHOULD create the component WHEN initialized', () => {
     expect(sut).toBeTruthy();
   });
@@ -35,8 +42,6 @@ describe('BookCatListComponent', () => {
       booksList: [],
     };
 
-    console.log(sut.books);
-
     // Act
     fixture.detectChanges();
 
@@ -45,7 +50,7 @@ describe('BookCatListComponent', () => {
     const genreTitleElement = fixture.debugElement.query(
       By.css('.genre__title'),
     );
-    console.log(genreTitleElement.nativeElement);
+
     expect(genreTitleElement.nativeElement.textContent).toContain(
       sut.books.genreName,
     );

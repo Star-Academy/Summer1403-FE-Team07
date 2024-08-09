@@ -18,6 +18,13 @@ describe('NavbarComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    if (fixture) {
+      fixture.destroy();
+    }
+    TestBed.resetTestingModule();
+  });
+
   it('component SHOULD be created WHEN ever', () => {
     expect(sut).toBeTruthy();
   });

@@ -98,7 +98,8 @@
       @include inputStyle;
     }
 
-    &__input--invalid, input.book-form__input--invalid {
+    &__input--invalid,
+    input.book-form__input--invalid {
       border-color: var(--input-invalid);
     }
 
@@ -134,7 +135,6 @@
     box-shadow: none;
   }
 }
-
 
 .p-link,
 .p-datepicker table {

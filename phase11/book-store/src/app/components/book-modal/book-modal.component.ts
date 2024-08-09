@@ -1,14 +1,26 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {Button} from "primeng/button";
-import {CalendarModule} from "primeng/calendar";
-import {DialogModule} from "primeng/dialog";
-import {InputNumberModule} from "primeng/inputnumber";
-import {NgClass, NgForOf, NgIf} from "@angular/common";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {ToastModule} from "primeng/toast";
-import {Book} from "../../models/Book";
-import {MessageService} from "primeng/api";
-import {BookOperationsService} from "../../services/book-operation/book-operations.service";
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
+import { Button } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { Book } from '../../models/Book';
+import { MessageService } from 'primeng/api';
+import { BookOperationsService } from '../../services/book-operation/book-operations.service';
 
 @Component({
   selector: 'app-book-modal',
@@ -22,13 +34,12 @@ import {BookOperationsService} from "../../services/book-operation/book-operatio
     ReactiveFormsModule,
     ToastModule,
     NgClass,
-    NgForOf
+    NgForOf,
   ],
   templateUrl: './book-modal.component.html',
   styleUrl: './book-modal.component.scss',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
-
 export class BookModalComponent implements OnInit {
   bookForm: FormGroup;
   submitted: boolean = false;
@@ -39,7 +50,7 @@ export class BookModalComponent implements OnInit {
     genre: [],
     author: '',
     publishData: '',
-    price: 0
+    price: 0,
   };
 
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -49,23 +60,27 @@ export class BookModalComponent implements OnInit {
     this.visibleChange.emit(false);
   }
 
-  constructor(private fb: FormBuilder,
-              private messageService: MessageService,
-              private bookOperations: BookOperationsService) {
+  constructor(
+    private fb: FormBuilder,
+    private messageService: MessageService,
+    private bookOperations: BookOperationsService,
+  ) {
     this.bookForm = this.fb.group({
       name: ['', Validators.required],
       image: ['', Validators.required],
       publishData: ['', Validators.required],
       genre: ['', Validators.required],
       author: ['', Validators.required],
-      price: ['', [Validators.required, Validators.min(1)]]
+      price: ['', [Validators.required, Validators.min(1)]],
     });
   }
 
   ngOnInit() {
     if (this.book) {
       this.bookForm.patchValue(this.book);
-      this.bookForm.get('publishData')?.setValue(new Date(this.book.publishData));
+      this.bookForm
+        .get('publishData')
+        ?.setValue(new Date(this.book.publishData));
     }
   }
 
@@ -86,7 +101,7 @@ export class BookModalComponent implements OnInit {
     this.submitted = true;
     const formValue = this.bookForm.value;
     formValue.publishData = this.formatDate(formValue.publishData);
-    formValue.genre = formValue.genre.split(", ");
+    formValue.genre = formValue.genre.split(', ');
     const book: Book = formValue;
     this.bookOperations.addBook(book);
     this.visible = false;
@@ -96,7 +111,7 @@ export class BookModalComponent implements OnInit {
       severity: 'info',
       summary: 'Confirmed',
       detail: 'Book is successfully added',
-      life: 3000
+      life: 3000,
     });
   }
 
@@ -106,7 +121,7 @@ export class BookModalComponent implements OnInit {
     formValue.publishData = this.formatDate(formValue.publishData);
 
     if (typeof formValue.genre === 'string') {
-      formValue.genre = formValue.genre.split(", ");
+      formValue.genre = formValue.genre.split(', ');
     }
 
     const newBook: Book = formValue;

@@ -152,7 +152,7 @@ describe('HomeComponent Integration', () => {
 
     // Act
     searchResultsSubject.next(mockSearchResults);
-    // tick();
+    tick();
     fixture.detectChanges();
 
     // Assert

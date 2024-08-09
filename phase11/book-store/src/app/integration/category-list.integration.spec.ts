@@ -1,35 +1,40 @@
-import {ComponentFixture, fakeAsync, TestBed, tick,} from '@angular/core/testing';
-import {BookOperationsService} from '../services/book-operation/book-operations.service';
-import {BehaviorSubject, of, Subject} from 'rxjs';
-import {Book} from '../models/Book';
-import {SearchType} from '../models/SearchType';
-import {NO_ERRORS_SCHEMA} from '@angular/core';
-import {NavbarComponent} from '../components/navbar/navbar.component';
-import {SearchComponent} from '../components/search/search.component';
-import {BookProviderService} from '../services/book-provider/book-provider.service';
-import {ActivatedRoute} from '@angular/router';
-import {By, Title} from '@angular/platform-browser';
-import {CategoryListComponent} from "../components/category-list/category-list.component";
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
+import { BookOperationsService } from '../services/book-operation/book-operations.service';
+import { BookSearchService } from '../services/search/book-search.service';
+import { BehaviorSubject, of, Subject } from 'rxjs';
+import { GenreBooks } from '../models/GenreBooks';
+import { Book } from '../models/Book';
+import { SearchType } from '../models/SearchType';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NavbarComponent } from '../components/navbar/navbar.component';
+import { BookCatListComponent } from '../components/book-cat-list/book-cat-list.component';
+import { CarouselComponent } from '../components/carousel/carousel.component';
+import { SearchComponent } from '../components/search/search.component';
+import { BookProviderService } from '../services/book-provider/book-provider.service';
+import { ActivatedRoute } from '@angular/router';
+import { By } from '@angular/platform-browser';
+import {GenreBooksComponent} from "../components/genre-books/genre-books.component";
 
 describe('CategoryList Integration', () => {
-  let component: CategoryListComponent;
-  let fixture: ComponentFixture<CategoryListComponent>;
+  let component: GenreBooksComponent;
+  let fixture: ComponentFixture<GenreBooksComponent>;
   let bookProviderService: jasmine.SpyObj<BookProviderService>;
   let bookOperationsService: jasmine.SpyObj<BookOperationsService>;
+  let bookSearchService: jasmine.SpyObj<BookSearchService>;
   const searchResultsSubject = new BehaviorSubject<SearchType>({
     query: '',
     results: [],
   });
   const bookAddedSubject = new Subject<Book>();
-  let titleService: jasmine.SpyObj<Title>;
 
   beforeEach(async () => {
     const mockActivatedRoute = {
-      snapshot: {
-        params: {
-          category: 'Science Fiction',
-        },
-      },
+      paramMap: of({}),
     };
 
     const bookProviderServiceSpy = jasmine.createSpyObj('BookProviderService', [
@@ -41,19 +46,22 @@ describe('CategoryList Integration', () => {
       [],
       { onAddBook: bookAddedSubject.asObservable() },
     );
-
-    titleService = jasmine.createSpyObj('Title', ['setTitle', 'getTitle']);
+    const bookSearchServiceSpy = jasmine.createSpyObj('BookSearchService', [], {
+      searchResults$: searchResultsSubject.asObservable(),
+    });
 
     await TestBed.configureTestingModule({
       imports: [
-        CategoryListComponent,
+        GenreBooksComponent,
         NavbarComponent,
+        BookCatListComponent,
+        CarouselComponent,
         SearchComponent,
       ],
       providers: [
-        { provide: Title, useValue: titleService },
         { provide: BookProviderService, useValue: bookProviderServiceSpy },
         { provide: BookOperationsService, useValue: bookOperationsServiceSpy },
+        { provide: BookSearchService, useValue: bookSearchServiceSpy },
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
       ],
       schemas: [NO_ERRORS_SCHEMA],
@@ -65,8 +73,11 @@ describe('CategoryList Integration', () => {
     bookOperationsService = TestBed.inject(
       BookOperationsService,
     ) as jasmine.SpyObj<BookOperationsService>;
+    bookSearchService = TestBed.inject(
+      BookSearchService,
+    ) as jasmine.SpyObj<BookSearchService>;
 
-    fixture = TestBed.createComponent(CategoryListComponent);
+    fixture = TestBed.createComponent(GenreBooksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -77,4 +88,31 @@ describe('CategoryList Integration', () => {
     }
     TestBed.resetTestingModule();
   });
+
+  it('SHOULD display search results WHEN new search results are emitted', fakeAsync(() => {
+    // Arrange
+    const mockSearchResults: SearchType = {
+      query: 'Dune',
+      results: [
+        {
+          name: 'Dune',
+          image: 'dune.jpg',
+          genre: ['Science Fiction'],
+          author: 'Frank Herbert',
+          publishData: '1965-08-01',
+          price: 9.99,
+        },
+      ],
+    };
+
+    // Act
+    searchResultsSubject.next(mockSearchResults);
+    tick();
+    fixture.detectChanges();
+
+    // Assert
+    expect(component.results).toEqual(mockSearchResults);
+
+    expect(fixture.debugElement.query(By.css('.search-books'))).toBeTruthy();
+  }));
 });

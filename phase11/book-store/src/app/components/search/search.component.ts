@@ -26,7 +26,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchService.searchResults$.subscribe((output) => {
-      console.log('heb2', output);
       this.results = output;
     });
   }

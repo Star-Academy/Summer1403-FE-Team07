@@ -1,4 +1,5 @@
-h3, p {
+h3,
+p {
   margin-block: 0;
   padding-block: 0;
   padding-inline: 0;
@@ -15,7 +16,9 @@ h3, p {
   gap: 2rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0 3px 6px,
+    rgba(0, 0, 0, 0.23) 0 3px 6px;
   text-decoration: none;
 
   &:hover {
@@ -26,7 +29,9 @@ h3, p {
     inline-size: 12rem;
     block-size: 18rem;
     border-radius: 0.5rem;
-    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+    box-shadow:
+      rgba(0, 0, 0, 0.16) 0 3px 6px,
+      rgba(0, 0, 0, 0.23) 0 3px 6px;
   }
 
   &-detail {
@@ -59,7 +64,7 @@ h3, p {
     & > .genre__book-price {
       font-size: 2.4rem;
       font-weight: bold;
-      color: #6251DD;
+      color: #6251dd;
     }
   }
 }

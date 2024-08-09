@@ -1,24 +1,24 @@
 <p-toast></p-toast>
 
 <p-dialog
-  class="book-dialog"
-  header="Add New Book"
-  [modal]="true"
-  [(visible)]="visible"
   (onHide)="toggleVisibility()"
+  [(visible)]="visible"
+  [modal]="true"
   [style]="{
     inlineSize: 'fit-content',
     maxInlineSize: '80%',
     minInlineSize: '25%',
     minBlockSize: '55vh',
   }"
+  class="book-dialog"
+  header="Add New Book"
   styleClass="custom-dialog"
 >
   <div class="book-dialog__content">
     <h3 class="book-dialog__title">
       Please enter the information for your new book below.
     </h3>
-    <form class="book-form" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" [formGroup]="bookForm" class="book-form">
       <ng-container
         *ngFor="
           let field of [
@@ -33,22 +33,22 @@
       >
         <div class="book-form__group">
           <div class="book-form__label-section">
-            <label class="book-form__label" [for]="field">{{
+            <label [for]="field" class="book-form__label">{{
               field.charAt(0).toUpperCase() + field.slice(1)
             }}</label>
             <p
-              class="book-form__error"
               *ngIf="
                 bookForm.get(field)?.invalid &&
                 (bookForm.get(field)?.touched || submitted)
               "
+              class="book-form__error"
             >
               Required
               <i class="book-form__error-icon">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
                   fill="rgba(255, 56, 56, 0.6)"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
@@ -60,48 +60,47 @@
 
           <input
             *ngIf="field !== 'publishData' && field !== 'price'"
-            [id]="field"
             [formControlName]="field"
-            class="book-form__input"
-            type="text"
+            [id]="field"
             [ngClass]="{
               'book-form__input--invalid':
                 bookForm.get(field)?.invalid &&
                 (bookForm.get(field)?.touched || submitted),
             }"
+            class="book-form__input"
+            type="text"
           />
 
           <p-calendar
             *ngIf="field === 'publishData'"
-            [style]="{ inlineSize: '100%' }"
-            [id]="field"
             [formControlName]="field"
-            class="book-form__input book-form__input--date"
+            [id]="field"
             [ngClass]="{
               'book-form__input--invalid':
                 bookForm.get(field)?.invalid &&
                 (bookForm.get(field)?.touched || submitted),
             }"
+            [style]="{ inlineSize: '100%' }"
+            class="book-form__input book-form__input--date"
           ></p-calendar>
 
           <p-inputNumber
             *ngIf="field === 'price'"
-            [style]="{ inlineSize: '100%' }"
-            [id]="field"
             [formControlName]="field"
-            class="book-form__input book-form__input--price"
+            [id]="field"
             [ngClass]="{
               'book-form__input--invalid':
                 bookForm.get(field)?.invalid &&
                 (bookForm.get(field)?.touched || submitted),
             }"
+            [style]="{ inlineSize: '100%' }"
+            class="book-form__input book-form__input--price"
           ></p-inputNumber>
         </div>
       </ng-container>
 
       <p-button
-        type="submit"
-        class="book-form__submit"
+        (click)="onSubmit()"
         [style]="{
           outline: 'none',
           paddingBlock: '0',
@@ -110,7 +109,8 @@
           'box-shadow': 'none',
           backgroundColor: 'transparent',
         }"
-        (click)="onSubmit()"
+        class="book-form__submit"
+        type="submit"
       >
         <div class="book-form__submit-text">Submit</div>
       </p-button>

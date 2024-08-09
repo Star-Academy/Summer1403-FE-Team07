@@ -3,7 +3,7 @@ import { HomeComponent } from './home.component';
 import { BookProviderService } from '../../services/book-provider/book-provider.service';
 import { BookOperationsService } from '../../services/book-operation/book-operations.service';
 import { BookSearchService } from '../../services/search/book-search.service';
-import { of, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { GenreBooks } from '../../models/GenreBooks';

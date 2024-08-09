@@ -11,10 +11,14 @@
   padding-block: 2rem;
   padding-inline: 2rem;
   transition: all 0.3s ease-in-out;
-  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0 3px 6px,
+    rgba(0, 0, 0, 0.23) 0 3px 6px;
   cursor: pointer;
 
-  p, h2, h3 {
+  p,
+  h2,
+  h3 {
     margin-block: 0;
   }
 
@@ -33,7 +37,9 @@
     inline-size: 20rem;
     block-size: 30rem;
     border-radius: 0.5rem;
-    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+    box-shadow:
+      rgba(0, 0, 0, 0.16) 0 3px 6px,
+      rgba(0, 0, 0, 0.23) 0 3px 6px;
   }
 
   &__detail {

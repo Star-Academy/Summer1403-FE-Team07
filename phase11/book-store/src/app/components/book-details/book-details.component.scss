@@ -2,7 +2,9 @@
   padding-block: 3rem;
   padding-inline: 6rem;
 
-  h2, h3, p {
+  h2,
+  h3,
+  p {
     margin-block: 0;
     padding-block: 0;
     padding-inline: 0;
@@ -70,15 +72,17 @@
         inset-block-start: 15rem;
         border: 1px solid rgba(9, 9, 55, 0.1);
         border-radius: 0.7rem;
-        box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px,
-        rgba(0, 0, 0, 0.23) 0 3px 6px;
+        box-shadow:
+          rgba(0, 0, 0, 0.16) 0 3px 6px,
+          rgba(0, 0, 0, 0.23) 0 3px 6px;
 
         > img {
           inline-size: 30rem;
           block-size: 45rem;
           border-radius: 0.5rem;
-          box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px,
-          rgba(0, 0, 0, 0.23) 0 3px 6px;
+          box-shadow:
+            rgba(0, 0, 0, 0.16) 0 3px 6px,
+            rgba(0, 0, 0, 0.23) 0 3px 6px;
         }
       }
 

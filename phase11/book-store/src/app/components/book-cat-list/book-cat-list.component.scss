@@ -36,19 +36,19 @@
       text-decoration: none;
       font-size: 2rem;
       font-weight: bold;
-      color: #EF6B4A;
+      color: #ef6b4a;
       cursor: pointer;
       position: relative;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         inline-size: 0;
         block-size: 0.3rem;
         inset-inline-start: 0;
         inset-block-end: 0;
-        background-color: #EF6B4A;
-        transition: all ease-in-out .2s;
+        background-color: #ef6b4a;
+        transition: all ease-in-out 0.2s;
       }
 
       &:hover::after {

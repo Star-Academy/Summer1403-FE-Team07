@@ -55,11 +55,6 @@ export class BookModalComponent implements OnInit {
 
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  toggleVisibility() {
-    this.visible = false;
-    this.visibleChange.emit(false);
-  }
-
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
@@ -73,6 +68,11 @@ export class BookModalComponent implements OnInit {
       author: ['', Validators.required],
       price: ['', [Validators.required, Validators.min(1)]],
     });
+  }
+
+  toggleVisibility() {
+    this.visible = false;
+    this.visibleChange.emit(false);
   }
 
   ngOnInit() {

@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
 import { Book } from '../../models/Book';
 
 describe('CategoryListComponent', () => {
-  let component: CategoryListComponent;
+  let sut: CategoryListComponent;
   let fixture: ComponentFixture<CategoryListComponent>;
   let booksProviderSpy: jasmine.SpyObj<BookProviderService>;
   let bookOperationsSpy: jasmine.SpyObj<BookOperationsService>;
@@ -46,12 +46,12 @@ describe('CategoryListComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(CategoryListComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('component SHOULD be created WHEN ever', () => {
-    expect(component).toBeTruthy();
+    expect(sut).toBeTruthy();
   });
 
   it('SHOULD update books WHEN onAddBook emits a new book', () => {
@@ -64,14 +64,14 @@ describe('CategoryListComponent', () => {
       publishData: '2021-01-01',
       price: 10,
     };
-    component.books = [{ genreName: 'test', booksList: [] }];
+    sut.books = [{ genreName: 'test', booksList: [] }];
 
     // Act
     onAddBookSubject.next(newBook);
     fixture.detectChanges();
 
     // Assert
-    expect(component.books[0].booksList).toContain(newBook);
+    expect(sut.books[0].booksList).toContain(newBook);
   });
 
   it('SHOULD update the page title based on route parameter WHEN navigated to', () => {
@@ -80,7 +80,7 @@ describe('CategoryListComponent', () => {
     activatedRouteSpy.snapshot.params['category'] = newCategory;
 
     // Act
-    component.ngOnInit();
+    sut.ngOnInit();
 
     // Assert
     expect(titleService.setTitle).toHaveBeenCalledWith(

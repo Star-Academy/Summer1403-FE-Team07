@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 
 describe('BookCatListComponent', () => {
-  let component: BookCatListComponent;
+  let sut: BookCatListComponent;
   let fixture: ComponentFixture<BookCatListComponent>;
 
   beforeEach(async () => {
@@ -21,39 +21,39 @@ describe('BookCatListComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(BookCatListComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
   });
 
   it('SHOULD create the component WHEN initialized', () => {
-    expect(component).toBeTruthy();
+    expect(sut).toBeTruthy();
   });
 
   it('SHOULD update genre title WHEN route param "genre" is provided', () => {
     // Arrange
-    component.books = {
+    sut.books = {
       genreName: 'salam',
       booksList: [],
     };
 
-    console.log(component.books);
+    console.log(sut.books);
 
     // Act
     fixture.detectChanges();
 
     // Assert
-    expect(component.books.genreName).toBe('salam');
+    expect(sut.books.genreName).toBe('salam');
     const genreTitleElement = fixture.debugElement.query(
       By.css('.genre__title'),
     );
     console.log(genreTitleElement.nativeElement);
     expect(genreTitleElement.nativeElement.textContent).toContain(
-      component.books.genreName,
+      sut.books.genreName,
     );
   });
 
   it('SHOULD navigate to the correct genre page WHEN "View All" is clicked', () => {
     // Arrange
-    component.books = {
+    sut.books = {
       genreName: 'Science Fiction',
       booksList: [],
     };
@@ -78,7 +78,7 @@ describe('BookCatListComponent', () => {
       publishData: '2023-01-01',
       price: 10,
     }));
-    component.books = {
+    sut.books = {
       genreName: 'Drama',
       booksList: mockBooks,
     };
@@ -104,7 +104,7 @@ describe('BookCatListComponent', () => {
         publishData: '2023-01-01',
         price: 10,
       }));
-      component.books = {
+      sut.books = {
         genreName: 'Adventure',
         booksList: mockBooks,
       };
@@ -122,7 +122,7 @@ describe('BookCatListComponent', () => {
 
   it('SHOULD handle empty booksList gracefully', () => {
     // Arrange
-    component.books = {
+    sut.books = {
       genreName: 'Mystery',
       booksList: [],
     };

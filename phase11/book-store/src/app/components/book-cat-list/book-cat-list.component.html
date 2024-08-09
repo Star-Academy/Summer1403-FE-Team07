@@ -1,8 +1,14 @@
 <div class="genre">
   <div class="genre__header">
     <h2 class="genre__title">{{ books.genreName }}</h2>
-    <a class="genre__view-all" [routerLink]="['/genre', books.genreName.toLowerCase().replaceAll(' ', '-')]">View
-      All</a>
+    <a
+      [routerLink]="[
+        '/genre',
+        books.genreName.toLowerCase().replaceAll(' ', '-'),
+      ]"
+      class="genre__view-all"
+      >View All</a
+    >
   </div>
   <div class="genre__books">
     @for (book of books.booksList.slice(0, 4); track book) {
@@ -10,4 +16,3 @@
     }
   </div>
 </div>
-

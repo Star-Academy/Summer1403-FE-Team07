@@ -1,24 +1,30 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {BookProviderService} from "../../services/book-provider/book-provider.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Title} from "@angular/platform-browser";
-import {Book} from "../../models/Book";
-import {Location, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
-import {ConfirmPopupModule} from 'primeng/confirmpopup';
-import {ToastModule} from "primeng/toast";
-import {Button} from "primeng/button";
-import {ConfirmationService, MessageService} from "primeng/api";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {CalendarModule} from "primeng/calendar";
-import {DialogModule} from "primeng/dialog";
-import {InputNumberModule} from "primeng/inputnumber";
-import {Subscription} from "rxjs";
-import {SearchType} from "../../models/SearchType";
-import {SearchComponent} from "../search/search.component";
-import {ThemeService} from "../../services/theme/theme.service";
-import {BookModalComponent} from "../book-modal/book-modal.component";
-import {BookSearchService} from "../../services/search/book-search.service";
-import {BookOperationsService} from "../../services/book-operation/book-operations.service";
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { BookProviderService } from '../../services/book-provider/book-provider.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { Book } from '../../models/Book';
+import {
+  Location,
+  NgClass,
+  NgForOf,
+  NgIf,
+  NgOptimizedImage,
+} from '@angular/common';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ToastModule } from 'primeng/toast';
+import { Button } from 'primeng/button';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CalendarModule } from 'primeng/calendar';
+import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { Subscription } from 'rxjs';
+import { SearchType } from '../../models/SearchType';
+import { SearchComponent } from '../search/search.component';
+import { ThemeService } from '../../services/theme/theme.service';
+import { BookModalComponent } from '../book-modal/book-modal.component';
+import { BookSearchService } from '../../services/search/book-search.service';
+import { BookOperationsService } from '../../services/book-operation/book-operations.service';
 
 @Component({
   selector: 'app-book-details',
@@ -37,43 +43,48 @@ import {BookOperationsService} from "../../services/book-operation/book-operatio
     NgClass,
     NgForOf,
     SearchComponent,
-    BookModalComponent
+    BookModalComponent,
   ],
   templateUrl: './book-details.component.html',
   styleUrl: './book-details.component.scss',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
-
 export class BookDetailsComponent implements OnInit {
   book: Book | undefined;
-  bookName: string = "";
+  bookName: string = '';
   isLiked: boolean = false;
   visible: boolean = false;
-  private subscription: Subscription = new Subscription();
   results: SearchType = {
     query: '',
-    results: []
+    results: [],
   };
   isLight: boolean = false;
+  private subscription: Subscription = new Subscription();
 
-  constructor(private bookProviderService: BookProviderService, private route: ActivatedRoute,
-              private titleService: Title, private router: Router, private location: Location,
-              private confirmationService: ConfirmationService, private messageService: MessageService,
-              private themeService: ThemeService, private searchService: BookSearchService, private bookOperation: BookOperationsService) {
-  }
+  constructor(
+    private bookProviderService: BookProviderService,
+    private route: ActivatedRoute,
+    private titleService: Title,
+    private router: Router,
+    private location: Location,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
+    private themeService: ThemeService,
+    private searchService: BookSearchService,
+    private bookOperation: BookOperationsService,
+  ) {}
 
   ngOnInit(): void {
-
-    this.themeService.onToggle.subscribe(val => {
+    this.themeService.onToggle.subscribe((val) => {
       this.isLight = val;
     });
 
-    this.searchService.searchResults$.subscribe(output => {
+    this.searchService.searchResults$.subscribe((output) => {
       this.results = output;
     });
 
     this.subscription.add(
-      this.bookOperation.onUpdateBook.subscribe(value => {
+      this.bookOperation.onUpdateBook.subscribe((value) => {
         this.book = value;
         this.bookName = value.name.toLowerCase().replaceAll(' ', '-');
         this.router.navigate(['/details', this.bookName]).then(() => {
@@ -83,20 +94,22 @@ export class BookDetailsComponent implements OnInit {
           severity: 'info',
           summary: 'Confirmed',
           detail: 'Book is successfully updated',
-          life: 3000
+          life: 3000,
         });
-      })
+      }),
     );
 
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       const newBookName = params.get('name');
       const theme = document.body.getAttribute('data-theme');
       this.isLight = theme === 'light';
       if (newBookName && this.bookName !== newBookName) {
         this.bookName = newBookName;
-        this.book = this.bookProviderService.findBookByName(this.bookName.replaceAll('-', ' '));
+        this.book = this.bookProviderService.findBookByName(
+          this.bookName.replaceAll('-', ' '),
+        );
         this.titleService.setTitle(this.bookName);
-        this.titleService.setTitle(newBookName.replaceAll("-", ' '));
+        this.titleService.setTitle(newBookName.replaceAll('-', ' '));
       }
     });
   }
@@ -112,20 +125,20 @@ export class BookDetailsComponent implements OnInit {
       icon: 'pi pi-info-circle',
       acceptButtonStyleClass: 'p-button-danger p-button-sm',
       accept: () => {
-        this.bookOperation.deleteBook(this.bookName)
+        this.bookOperation.deleteBook(this.bookName);
         this.messageService.add({
           severity: 'info',
           summary: 'Confirmed',
           detail: 'Book is successfully deleted',
-          life: 3000
+          life: 3000,
         });
         this.router.navigate(['']).then(() => {
-          return
+          return;
         });
       },
       reject: () => {
         return;
-      }
+      },
     });
   }
 
@@ -140,6 +153,4 @@ export class BookDetailsComponent implements OnInit {
   closeDialog() {
     this.visible = false;
   }
-
-
 }

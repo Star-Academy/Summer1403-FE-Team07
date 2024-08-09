@@ -16,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Book } from '../../models/Book';
 
 describe('BookDetailsComponent', () => {
-  let component: BookDetailsComponent;
+  let sut: BookDetailsComponent;
   let fixture: ComponentFixture<BookDetailsComponent>;
   let mockBookProviderService: jasmine.SpyObj<BookProviderService>;
   let mockConfirmationService: jasmine.SpyObj<ConfirmationService>;
@@ -81,11 +81,11 @@ describe('BookDetailsComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(BookDetailsComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
   });
 
   it('SHOULD create the component WHEN initialized', () => {
-    expect(component).toBeTruthy();
+    expect(sut).toBeTruthy();
   });
 
   it('SHOULD initialize with the correct book details WHEN book name is provided in route', () => {
@@ -104,7 +104,7 @@ describe('BookDetailsComponent', () => {
     fixture.detectChanges();
 
     // Assert
-    expect(component.book).toEqual(mockBook);
+    expect(sut.book).toEqual(mockBook);
     expect(mockBookProviderService.findBookByName).toHaveBeenCalledWith(
       'test book',
     );
@@ -112,7 +112,7 @@ describe('BookDetailsComponent', () => {
 
   it('SHOULD navigate back WHEN goBack is called', () => {
     // Act
-    component.goBack();
+    sut.goBack();
 
     // Assert
     expect(mockLocation.back).toHaveBeenCalled();
@@ -120,7 +120,7 @@ describe('BookDetailsComponent', () => {
 
   it('SHOULD display confirmation popup and delete book WHEN deleteConfirm is called', () => {
     // Arrange
-    component.bookName = 'test-book';
+    sut.bookName = 'test-book';
 
     // Mock the confirm method to immediately call the accept function
     // mockConfirmationService.confirm.and.callFake((confirmation) => {
@@ -128,7 +128,7 @@ describe('BookDetailsComponent', () => {
     // });
 
     // Act
-    component.deleteConfirm(new MouseEvent('click'));
+    sut.deleteConfirm(new MouseEvent('click'));
 
     // Assert
     expect(mockBookOperationsService.deleteBook).toHaveBeenCalledWith(
@@ -162,7 +162,7 @@ describe('BookDetailsComponent', () => {
     fixture.detectChanges();
 
     // Assert
-    expect(component.book).toEqual(updatedBook);
+    expect(sut.book).toEqual(updatedBook);
     expect(mockRouter.navigate).toHaveBeenCalledWith([
       '/details',
       'updated-book',
@@ -183,42 +183,42 @@ describe('BookDetailsComponent', () => {
     (mockThemeService.onToggle as Subject<boolean>).next(false);
 
     // Assert
-    expect(component.isLight).toBeFalse();
+    expect(sut.isLight).toBeFalse();
   });
 
   it('SHOULD show dialog WHEN showDialog is called', () => {
     // Act
-    component.showDialog();
+    sut.showDialog();
 
     // Assert
-    expect(component.visible).toBeTrue();
+    expect(sut.visible).toBeTrue();
   });
 
   it('SHOULD close dialog WHEN closeDialog is called', () => {
     // Arrange
-    component.visible = true;
+    sut.visible = true;
 
     // Act
-    component.closeDialog();
+    sut.closeDialog();
 
     // Assert
-    expect(component.visible).toBeFalse();
+    expect(sut.visible).toBeFalse();
   });
 
   it('SHOULD toggle favorite WHEN onClickFavorite is called', () => {
     // Arrange
-    component.isLiked = false;
+    sut.isLiked = false;
 
     // Act
-    component.onClickFavorite();
+    sut.onClickFavorite();
 
     // Assert
-    expect(component.isLiked).toBeTrue();
+    expect(sut.isLiked).toBeTrue();
 
     // Act again
-    component.onClickFavorite();
+    sut.onClickFavorite();
 
     // Assert
-    expect(component.isLiked).toBeFalse();
+    expect(sut.isLiked).toBeFalse();
   });
 });

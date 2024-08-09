@@ -1,13 +1,13 @@
-import {Component, Input, input} from '@angular/core';
-import {Book} from "../../models/Book";
-import {Router} from "@angular/router";
+import { Component, Input } from '@angular/core';
+import { Book } from '../../models/Book';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-card',
   standalone: true,
   imports: [],
   templateUrl: './book-card.component.html',
-  styleUrl: './book-card.component.scss'
+  styleUrl: './book-card.component.scss',
 })
 export class BookCardComponent {
   @Input() book: Book = {
@@ -16,14 +16,14 @@ export class BookCardComponent {
     genre: [],
     author: '',
     publishData: '',
-    price: 0
+    price: 0,
   };
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   goToDetails(name: string) {
-    this.router.navigate(['/details', name.toLowerCase().replaceAll(' ', '-')])
+    this.router
+      .navigate(['/details', name.toLowerCase().replaceAll(' ', '-')])
       .then(() => {
         return;
       });

@@ -1,0 +1,43 @@
+@mixin link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: var(--background-cards);
+  border-radius: 5px;
+  padding-block: 15px;
+  padding-inline: 15px;
+}
+
+.add-container {
+  background-color: var(--background-cards);
+  padding-block: 10px 7px;
+  padding-inline: 10px;
+
+  &__img {
+    inline-size: 35px;
+    block-size: 35px;
+  }
+}
+
+.favorite-container {
+  background-color: var(--background-cards);
+  padding-block: 12.5px 9.2px;
+  padding-inline: 12.5px;
+
+  &__img {
+    inline-size: 30px;
+    block-size: 30px;
+  }
+}
+
+.theme-container {
+  @include link();
+  padding-block: 12.5px;
+  padding-inline: 12.5px;
+
+  &__img {
+    inline-size: 30px;
+    block-size: 30px;
+  }
+}

@@ -1,0 +1,13 @@
+<div class="container">
+  @if (results.results.length === 0) {
+    <h3 class="notFound">
+      Sorry, we couldn't find any results. Try refining your search.
+    </h3>
+  } @else {
+    <div class="search-books">
+      @for (book of results.results; track book) {
+        <app-book-card [book]="book"></app-book-card>
+      }
+    </div>
+  }
+</div>

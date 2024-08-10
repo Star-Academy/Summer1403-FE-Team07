@@ -1,0 +1,67 @@
+@mixin center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: var(--background-color-secondary);
+  border-radius: 0.5rem;
+  padding-block: 1.5rem;
+  padding-inline: 1.5rem;
+}
+
+.navbar {
+  @include center();
+  margin-block: 0;
+  padding-block: 2.5rem;
+  padding-inline: 6rem;
+  background-color: var(--navbar-color);
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0 1px 3px -1px;
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 10;
+
+  &__logo {
+    cursor: pointer;
+    block-size: 4rem;
+    inline-size: 6rem;
+  }
+
+  &__search {
+    @include center();
+    background-color: var(--background-cards);
+    inline-size: 50%;
+    block-size: 5rem;
+    padding-block: 0;
+    padding-inline: 2rem;
+    border-radius: 1rem;
+
+    > input[type="text"] {
+      color: var(--primary-text-color);
+      inline-size: 100%;
+      block-size: 80%;
+      border: none;
+      outline: none;
+      padding-block: 0;
+      padding-inline: 1rem;
+      font-size: 2rem;
+      background-color: var(--background-cards);
+    }
+
+    input::placeholder {
+      color: var(--secondary-text-color);
+    }
+  }
+
+  &__links {
+    @include center();
+    gap: 2.4rem;
+  }
+}

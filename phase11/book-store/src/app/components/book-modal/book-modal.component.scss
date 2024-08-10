@@ -1,0 +1,206 @@
+@mixin inputStyle {
+  inline-size: 100%;
+  font-size: 1.5rem;
+  background-color: var(--input-background-color);
+  border: 1px solid var(--input-border-color);
+  color: var(--primary-text-color);
+  border-radius: 5px;
+}
+
+.book-dialog {
+  .p-dialog-header {
+    padding-block: 15px;
+    padding-inline: 15px;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    border-bottom: 1px solid #f0f0f0;
+
+    > span {
+      font-size: 20px;
+      color: var(--secondary-text-color);
+    }
+
+    svg {
+      inline-size: 18px;
+      block-size: 18px;
+    }
+  }
+
+  .book-dialog__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding-block: 2rem;
+    padding-inline: 2rem;
+  }
+
+  .book-dialog__title {
+    margin-block: 0;
+    font-size: 1.8rem;
+    color: var(--primary-text-color);
+  }
+
+  .book-form {
+    inline-size: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
+    &__group {
+      inline-size: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 7px;
+    }
+
+    &__label-section {
+      inline-size: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    &__label {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: var(--secondary-text-color);
+    }
+
+    &__error {
+      margin-block: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--input-invalid);
+      gap: 5px;
+    }
+
+    &__error-icon {
+      inline-size: 18px;
+      block-size: 18px;
+    }
+
+    input {
+      @include inputStyle;
+      padding-block: 10px;
+      padding-inline: 10px;
+    }
+
+    &__input {
+      @include inputStyle;
+    }
+
+    &__input--invalid,
+    input.book-form__input--invalid {
+      border-color: var(--input-invalid);
+    }
+
+    .p-inputwrapper.book-form__input {
+      border: none;
+    }
+
+    .p-inputwrapper.book-form__input--invalid input {
+      border: 1px solid var(--input-invalid);
+    }
+
+    &__input--date,
+    &__input--price {
+      inline-size: 100%;
+    }
+
+    &__submit {
+      align-self: flex-end;
+    }
+
+    &__submit-text {
+      padding-block: 5px;
+      padding-inline: 10px;
+      background-color: #6251dd;
+      font-size: 1.6rem;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+  }
+
+  .p-calendar:not(.p-calendar-disabled).p-focus > .p-inputtext,
+  .p-inputtext:enabled:hover {
+    box-shadow: none;
+  }
+}
+
+.p-link,
+.p-datepicker table {
+  font-size: 1.5rem;
+}
+
+.p-toast {
+  inline-size: 40rem;
+
+  .p-toast-message-icon {
+    padding-block-start: 3px;
+  }
+
+  .p-toast-summary {
+    font-size: 1.8rem;
+  }
+
+  .p-toast-detail {
+    font-size: 1.5rem;
+    color: rgba(9, 9, 55, 0.7);
+  }
+}
+
+.p-dialog-content {
+  background-color: var(--navbar-color);
+  color: var(--primary-text-color);
+  padding-block: 0;
+  padding-inline: 0;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+
+  .form-control,
+  .p-inputtext {
+    background-color: var(--input-background-color);
+    color: var(--primary-text-color);
+  }
+}
+
+.p-dialog-header,
+.custom-dialog div.p-dialog-header > span {
+  background-color: var(--navbar-color);
+  color: var(--primary-text-color);
+}
+
+.p-dialog-title {
+  color: var(--primary-text-color);
+}
+
+.p-datepicker,
+.p-datepicker-header,
+.p-datepicker-month,
+.p-datepicker-year {
+  font-size: 1.8rem;
+  background-color: var(--background-color-secondary);
+  color: var(--primary-text-color);
+
+  .p-ripple:hover {
+    color: #6251dd;
+  }
+}
+
+.p-element.submitButton button div {
+  color: #fff;
+  //background-color: rgba(98, 81, 221, 0.4);
+}
+
+.custom-dialog .submitButton div {
+  color: var(--primary-text-color);
+}
